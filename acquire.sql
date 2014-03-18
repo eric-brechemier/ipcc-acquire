@@ -29,10 +29,10 @@ SELECT
     SEPARATOR ','
   ) 'institutions',
   GROUP_CONCAT(
-    DISTINCT institution_types.name
-    ORDER BY institution_types.name
+    DISTINCT institution_types.symbol
+    ORDER BY institution_types.symbol
     SEPARATOR ','
-  ) 'institution_types',
+  ) 'institution_type_symbols',
   GROUP_CONCAT(
     DISTINCT countries.name
     ORDER BY countries.name
@@ -79,7 +79,7 @@ FROM
   (
     SELECT
       id,
-      CONCAT('"',name,'"') 'name'
+      symbol
     FROM institution_types
   ) AS institution_types,
   (
