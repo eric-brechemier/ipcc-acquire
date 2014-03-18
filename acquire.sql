@@ -8,9 +8,21 @@ SELECT
     ORDER BY participations.ar
     SEPARATOR ','
   ) 'assessment_reports',
-  participations.working_groups,
-  participations.chapters,
-  participations.roles
+  GROUP_CONCAT(
+    DISTINCT participations.working_groups
+    ORDER BY participations.ar
+    SEPARATOR ','
+  ) 'working_groups',
+  GROUP_CONCAT(
+    DISTINCT participations.chapters
+    ORDER BY participations.ar
+    SEPARATOR ','
+  ) 'chapters',
+  GROUP_CONCAT(
+    DISTINCT participations.roles
+    ORDER BY participations.ar
+    SEPARATOR ','
+  ) 'roles'
 FROM
   authors,
   (
