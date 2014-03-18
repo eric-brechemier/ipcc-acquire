@@ -24,12 +24,12 @@ SELECT
   CONCAT(
     '[',
     GROUP_CONCAT(
-      DISTINCT participations.chapters
+      DISTINCT participations.ar_wg_chapters
       ORDER BY participations.ar
       SEPARATOR '|'
     ),
     ']'
-  ) 'chapters',
+  ) 'ar_wg_chapters',
   CONCAT(
     '[',
     GROUP_CONCAT(
@@ -90,7 +90,7 @@ FROM
         DISTINCT CONCAT(ar,'.',wg,'.',chapter)
         ORDER BY wg, chapter
         SEPARATOR '|'
-      ) 'chapters',
+      ) 'ar_wg_chapters',
       GROUP_CONCAT(
         DISTINCT CONCAT(ar,'.',wg,'.',chapter,'.',role)
         ORDER BY wg, chapter, role
