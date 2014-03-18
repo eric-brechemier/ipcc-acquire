@@ -37,7 +37,12 @@ SELECT
     DISTINCT countries.name
     ORDER BY countries.name
     SEPARATOR ','
-  ) 'countries'
+  ) 'countries',
+  GROUP_CONCAT(
+    DISTINCT groupings.symbol
+    ORDER BY groupings.symbol
+    SEPARATOR ','
+  ) 'groupings_symbols'
 FROM
   authors,
   (
@@ -82,11 +87,17 @@ FROM
       id,
       CONCAT('"',name,'"') 'name'
     FROM countries
-  ) AS countries
+  ) AS countries,
+  (
+    SELECT
+      country_id, symbol
+    FROM groupings
+  ) AS groupings
 WHERE
   authors.id = participations.author_id
   AND institutions.id = participations.institution_id
   AND institutions.type_id = institution_types.id
   AND countries.id = institutions.country_id
+  AND groupings.country_id = institutions.country_id
 GROUP BY authors.id
 ;
