@@ -7,10 +7,22 @@ SELECT
     DISTINCT participations.ar
     ORDER BY participations.ar
     SEPARATOR ','
-  ) 'assessment_reports'
+  ) 'assessment_reports',
+  participations.working_groups
 FROM
   authors,
-  participations
+  (
+    SELECT
+      author_id,
+      ar,
+      GROUP_CONCAT(
+        DISTINCT CONCAT(ar,'.',wg)
+        ORDER BY wg
+        SEPARATOR ','
+      ) 'working_groups'
+    FROM participations
+    GROUP BY author_id, ar
+  ) AS participations
 WHERE
   authors.id = participations.author_id
 GROUP BY authors.id
