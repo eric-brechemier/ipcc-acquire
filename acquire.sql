@@ -32,7 +32,12 @@ SELECT
     DISTINCT institution_types.name
     ORDER BY institution_types.name
     SEPARATOR ','
-  ) 'institution_types'
+  ) 'institution_types',
+  GROUP_CONCAT(
+    DISTINCT countries.name
+    ORDER BY countries.name
+    SEPARATOR ','
+  ) 'countries'
 FROM
   authors,
   (
@@ -62,7 +67,8 @@ FROM
     SELECT
       id,
       CONCAT('"',name,'"') 'name',
-      type_id
+      type_id,
+      country_id
     FROM institutions
   ) AS institutions,
   (
@@ -70,10 +76,17 @@ FROM
       id,
       CONCAT('"',name,'"') 'name'
     FROM institution_types
-  ) AS institution_types
+  ) AS institution_types,
+  (
+    SELECT
+      id,
+      CONCAT('"',name,'"') 'name'
+    FROM countries
+  ) AS countries
 WHERE
   authors.id = participations.author_id
   AND institutions.id = participations.institution_id
   AND institutions.type_id = institution_types.id
+  AND countries.id = institutions.country_id
 GROUP BY authors.id
 ;
