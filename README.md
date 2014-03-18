@@ -1,11 +1,13 @@
 # GIEC Acquire
-Query 'giec' database from MySQL server and return CSV data
+Query 'giec' database from MySQL server and return data in TSV format
+(Tab-Separated Values).
 
-## Language
+## Languages
 
 * SQL
 
 ## Run
 
-    mysql> USE giec
-    mysql> SOURCE acquire.csv
+    $ # run the SQL script locally as database user 'root' without password
+    $ mysql --user root < acquire.sql > output/result.tsv
+
