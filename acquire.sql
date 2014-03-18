@@ -22,7 +22,12 @@ SELECT
     DISTINCT participations.roles
     ORDER BY participations.ar
     SEPARATOR ','
-  ) 'roles'
+  ) 'roles',
+  GROUP_CONCAT(
+    DISTINCT institutions.name
+    ORDER BY institutions.name
+    SEPARATOR ','
+  ) 'institutions'
 FROM
   authors,
   (
@@ -43,11 +48,19 @@ FROM
         DISTINCT CONCAT(ar,'.',wg,'.',chapter,'.',role)
         ORDER BY wg, chapter, role
         SEPARATOR ','
-      ) 'roles'
+      ) 'roles',
+      institution_id
     FROM participations
     GROUP BY author_id, ar
-  ) AS participations
+  ) AS participations,
+  (
+    SELECT
+      id,
+      CONCAT('"',name,'"') 'name'
+    FROM institutions
+  ) AS institutions
 WHERE
   authors.id = participations.author_id
+  AND institutions.id = participations.institution_id
 GROUP BY authors.id
 ;
