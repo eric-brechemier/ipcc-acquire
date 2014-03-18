@@ -1,4 +1,4 @@
-# GIEC Acquire
+# IPCC Acquire
 Query 'giec' database from MySQL server and return data in TSV format
 (Tab-Separated Values).
 
