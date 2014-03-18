@@ -15,12 +15,12 @@ SELECT
   CONCAT(
     '[',
     GROUP_CONCAT(
-      DISTINCT participations.working_groups
+      DISTINCT participations.ar_working_groups
       ORDER BY participations.ar
       SEPARATOR '|'
     ),
     ']'
-  ) 'working_groups',
+  ) 'ar_working_groups',
   CONCAT(
     '[',
     GROUP_CONCAT(
@@ -85,7 +85,7 @@ FROM
         DISTINCT CONCAT(ar,'.',wg)
         ORDER BY wg
         SEPARATOR '|'
-      ) 'working_groups',
+      ) 'ar_working_groups',
       GROUP_CONCAT(
         DISTINCT CONCAT(ar,'.',wg,'.',chapter)
         ORDER BY wg, chapter
