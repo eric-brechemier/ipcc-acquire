@@ -33,7 +33,7 @@ SELECT
   CONCAT(
     '[',
     GROUP_CONCAT(
-      DISTINCT participations.roles
+      DISTINCT participations.ar_wg_ch_roles
       ORDER BY participations.ar
       SEPARATOR '|'
     ),
@@ -95,7 +95,7 @@ FROM
         DISTINCT CONCAT(ar,'.',wg,'.',chapter,'.',role)
         ORDER BY wg, chapter, role
         SEPARATOR '|'
-      ) 'roles',
+      ) 'ar_wg_ch_roles',
       institution_id
     FROM participations
     GROUP BY author_id, ar
