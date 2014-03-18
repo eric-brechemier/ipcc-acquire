@@ -15,12 +15,30 @@ SELECT
   CONCAT(
     '[',
     GROUP_CONCAT(
+      DISTINCT participations.wg
+      ORDER BY participations.wg
+      SEPARATOR '|'
+    ),
+    ']'
+  ) 'working_groups',
+  CONCAT(
+    '[',
+    GROUP_CONCAT(
       DISTINCT participations.ar_working_groups
       ORDER BY participations.ar
       SEPARATOR '|'
     ),
     ']'
   ) 'ar_working_groups',
+  CONCAT(
+    '[',
+    GROUP_CONCAT(
+      DISTINCT participations.chapter
+      ORDER BY participations.chapter
+      SEPARATOR '|'
+    ),
+    ']'
+  ) 'chapters',
   CONCAT(
     '[',
     GROUP_CONCAT(
@@ -33,12 +51,21 @@ SELECT
   CONCAT(
     '[',
     GROUP_CONCAT(
+      DISTINCT participations.role
+      ORDER BY participations.role
+      SEPARATOR '|'
+    ),
+    ']'
+  ) 'roles',
+  CONCAT(
+    '[',
+    GROUP_CONCAT(
       DISTINCT participations.ar_wg_ch_roles
       ORDER BY participations.ar
       SEPARATOR '|'
     ),
     ']'
-  ) 'roles',
+  ) 'ar_wg_ch_roles',
   CONCAT(
     '[',
     GROUP_CONCAT(
@@ -81,16 +108,19 @@ FROM
     SELECT
       author_id,
       ar,
+      wg,
       GROUP_CONCAT(
         DISTINCT CONCAT(ar,'.',wg)
         ORDER BY wg
         SEPARATOR '|'
       ) 'ar_working_groups',
+      chapter,
       GROUP_CONCAT(
         DISTINCT CONCAT(ar,'.',wg,'.',chapter)
         ORDER BY wg, chapter
         SEPARATOR '|'
       ) 'ar_wg_chapters',
+      role,
       GROUP_CONCAT(
         DISTINCT CONCAT(ar,'.',wg,'.',chapter,'.',role)
         ORDER BY wg, chapter, role
