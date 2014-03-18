@@ -9,7 +9,8 @@ SELECT
     SEPARATOR ','
   ) 'assessment_reports',
   participations.working_groups,
-  participations.chapters
+  participations.chapters,
+  participations.roles
 FROM
   authors,
   (
@@ -25,7 +26,12 @@ FROM
         DISTINCT CONCAT(ar,'.',wg,'.',chapter)
         ORDER BY wg, chapter
         SEPARATOR ','
-      ) 'chapters'
+      ) 'chapters',
+      GROUP_CONCAT(
+        DISTINCT CONCAT(ar,'.',wg,'.',chapter,'.',role)
+        ORDER BY wg, chapter, role
+        SEPARATOR ','
+      ) 'roles'
     FROM participations
     GROUP BY author_id, ar
   ) AS participations
