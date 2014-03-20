@@ -6,48 +6,15 @@ SELECT
   CONCAT(
     '[',
     GROUP_CONCAT(
-      DISTINCT participations.ar
+      DISTINCT participations.contributions
       ORDER BY participations.ar
       SEPARATOR '|'
     ),
     ']'
-  ) 'assessment_reports',
-  CONCAT(
-    '[',
-    GROUP_CONCAT(
-      DISTINCT participations.wg
-      ORDER BY participations.wg
-      SEPARATOR '|'
-    ),
-    ']'
-  ) 'working_groups',
-  CONCAT(
-    '[',
-    GROUP_CONCAT(
-      DISTINCT participations.ar_working_groups
-      ORDER BY participations.ar
-      SEPARATOR '|'
-    ),
-    ']'
-  ) 'ar_working_groups',
-  CONCAT(
-    '[',
-    GROUP_CONCAT(
-      DISTINCT participations.chapter
-      ORDER BY participations.chapter
-      SEPARATOR '|'
-    ),
-    ']'
-  ) 'chapters',
-  CONCAT(
-    '[',
-    GROUP_CONCAT(
-      DISTINCT participations.ar_wg_chapters
-      ORDER BY participations.ar
-      SEPARATOR '|'
-    ),
-    ']'
-  ) 'ar_wg_chapters',
+  ) 'contributions',
+  COUNT(
+    DISTINCT participations.contributions
+  ) 'total_contributions',
   CONCAT(
     '[',
     GROUP_CONCAT(
@@ -60,12 +27,21 @@ SELECT
   CONCAT(
     '[',
     GROUP_CONCAT(
-      DISTINCT participations.ar_wg_ch_roles
+      DISTINCT participations.wg
+      ORDER BY participations.wg
+      SEPARATOR '|'
+    ),
+    ']'
+  ) 'working_groups',
+  CONCAT(
+    '[',
+    GROUP_CONCAT(
+      DISTINCT participations.ar
       ORDER BY participations.ar
       SEPARATOR '|'
     ),
     ']'
-  ) 'ar_wg_ch_roles',
+  ) 'assessment_reports',
   CONCAT(
     '[',
     GROUP_CONCAT(
@@ -78,30 +54,12 @@ SELECT
   CONCAT(
     '[',
     GROUP_CONCAT(
-      DISTINCT institution_types.symbol
-      ORDER BY institution_types.symbol
-      SEPARATOR '|'
-    ),
-    ']'
-  ) 'institution_type_symbols',
-  CONCAT(
-    '[',
-    GROUP_CONCAT(
       DISTINCT countries.name
       ORDER BY countries.name
       SEPARATOR '|'
     ),
     ']'
-  ) 'countries',
-  CONCAT(
-    '[',
-    GROUP_CONCAT(
-      DISTINCT groupings.symbol
-      ORDER BY groupings.symbol
-      SEPARATOR '|'
-    ),
-    ']'
-  ) 'groupings_symbols'
+  ) 'countries'
 FROM
   authors,
   (
@@ -109,23 +67,12 @@ FROM
       author_id,
       ar,
       wg,
-      GROUP_CONCAT(
-        DISTINCT CONCAT(ar,'.',wg)
-        ORDER BY wg
-        SEPARATOR '|'
-      ) 'ar_working_groups',
-      chapter,
-      GROUP_CONCAT(
-        DISTINCT CONCAT(ar,'.',wg,'.',chapter)
-        ORDER BY wg, chapter
-        SEPARATOR '|'
-      ) 'ar_wg_chapters',
       role,
       GROUP_CONCAT(
         DISTINCT CONCAT(ar,'.',wg,'.',chapter,'.',role)
         ORDER BY wg, chapter, role
         SEPARATOR '|'
-      ) 'ar_wg_ch_roles',
+      ) 'contributions',
       institution_id
     FROM participations
     GROUP BY author_id, ar
@@ -134,33 +81,18 @@ FROM
     SELECT
       id,
       name,
-      type_id,
       country_id
     FROM institutions
   ) AS institutions,
   (
     SELECT
       id,
-      symbol
-    FROM institution_types
-  ) AS institution_types,
-  (
-    SELECT
-      id,
       name
     FROM countries
-  ) AS countries,
-  (
-    SELECT
-      country_id,
-      symbol
-    FROM groupings
-  ) AS groupings
+  ) AS countries
 WHERE
   authors.id = participations.author_id
   AND institutions.id = participations.institution_id
-  AND institutions.type_id = institution_types.id
   AND countries.id = institutions.country_id
-  AND groupings.country_id = institutions.country_id
 GROUP BY authors.id
 ;
