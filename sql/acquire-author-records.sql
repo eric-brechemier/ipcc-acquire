@@ -12,8 +12,8 @@ SELECT
     ),
     ']'
   ) 'contributions',
-  COUNT(
-    DISTINCT participations.contributions
+  SUM(
+    participations.total_contributions
   ) 'total_contributions',
   CONCAT(
     '[',
@@ -82,6 +82,9 @@ FROM
         ORDER BY wg, chapter, role
         SEPARATOR '|'
       ) 'contributions',
+      COUNT(
+        DISTINCT CONCAT(ar,'.',wg,'.',chapter,'.',role)
+      ) 'total_contributions',
       GROUP_CONCAT(
         DISTINCT CONCAT(ar,'.',wg,'.',chapter)
         ORDER BY wg, chapter
