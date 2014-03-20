@@ -17,7 +17,7 @@ cd $(dirname $0)
 
 echo "Acquire Author Records"
 mysql --host "$host" --user "$user" --password "$password" \
-  < acquire-author-records.sql \
+  < sql/acquire-author-records.sql \
   > output/authors.tsv
 
 ls -l -h output
