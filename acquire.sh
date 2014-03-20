@@ -17,7 +17,14 @@ query="mysql --host $host --user $user --password $password"
 cd $(dirname $0)
 
 echo "Acquire Author Records"
-$query < sql/acquire-author-records.sql > output/authors.tsv
+$query \
+  < sql/acquire-author-records.sql \
+  > output/authors.tsv
+
+echo "Acquire Working Group Categories"
+$query \
+  < sql/acquire-working-group-categories.sql \
+  > output/working-group-categories.tsv
 
 ls -l -h output
 echo "Export Complete"
