@@ -5,9 +5,16 @@ Query 'giec' database from MySQL server and return data in TSV format
 ## Languages
 
 * SQL
+* Shell
 
 ## Run
 
-    $ # run the SQL script locally as database user 'root' without password
-    $ mysql --user root < acquire.sql > output/result.tsv
+Using defaults, the script runs locally as database user 'root'
+without password:
 
+    $ acquire.sh
+
+Extra parameters can be provided to connect to a remote database,
+specifying the user name and hostname:
+
+    $ acquire.sh 'user' 'hostname'
