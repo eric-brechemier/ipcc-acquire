@@ -11,14 +11,13 @@
 user=${1:-root}
 host=${2:-localhost}
 password=${3:-}
+query="mysql --host $host --user $user --password $password"
 
 # change to the script's directory
 cd $(dirname $0)
 
 echo "Acquire Author Records"
-mysql --host "$host" --user "$user" --password "$password" \
-  < sql/acquire-author-records.sql \
-  > output/authors.tsv
+$query < sql/acquire-author-records.sql > output/authors.tsv
 
 ls -l -h output
 echo "Export Complete"
