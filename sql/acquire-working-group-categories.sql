@@ -9,7 +9,10 @@ SELECT
         SEPARATOR '|'
       ),
     ']'
-  ) 'authors'
+  ) 'authors',
+  COUNT(
+    DISTINCT working_groups.author_id
+  ) 'total_authors'
 FROM
 (
   SELECT
