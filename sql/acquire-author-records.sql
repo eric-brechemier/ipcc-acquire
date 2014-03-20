@@ -27,6 +27,15 @@ SELECT
   CONCAT(
     '[',
     GROUP_CONCAT(
+      DISTINCT participations.chapters
+      ORDER BY participations.chapters
+      SEPARATOR '|'
+    ),
+    ']'
+  ) 'chapters',
+  CONCAT(
+    '[',
+    GROUP_CONCAT(
       DISTINCT participations.wg
       ORDER BY participations.wg
       SEPARATOR '|'
@@ -73,6 +82,11 @@ FROM
         ORDER BY wg, chapter, role
         SEPARATOR '|'
       ) 'contributions',
+      GROUP_CONCAT(
+        DISTINCT CONCAT(ar,'.',wg,'.',chapter)
+        ORDER BY wg, chapter
+        SEPARATOR '|'
+      ) 'chapters',
       institution_id
     FROM participations
     GROUP BY author_id, ar
