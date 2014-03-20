@@ -6,12 +6,21 @@
 # with
 #   user - optional, string, database user name, defaults to 'root'
 #   host - optional, string, database host name, defaults to 'localhost'
-#   password - optional, string, database user password, defaults to '';
+#   password - optional, string, database user password,
+#              defaults to 'no password' which provides no password;
 #              an empty string results in a prompt for password.
-user=${1:-root}
-host=${2:-localhost}
-password=${3:-}
-query="mysql --host $host --user $user --password $password"
+user=${1:-'root'}
+host=${2:-'localhost'}
+password=${3:-'no password'}
+
+if [ "$password" = "no password" ]
+then
+  passwordParam=''
+else
+  passwordParam="--password $password"
+fi
+
+query="mysql --host $host --user $user $passwordParam"
 
 # change to the script's directory
 cd $(dirname $0)
