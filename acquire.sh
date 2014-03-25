@@ -35,5 +35,10 @@ $query \
   < sql/acquire-working-group-categories.sql \
   > output/working-group-categories.tsv
 
+echo "Acquire Working Group in Assessment Report Categories"
+$query \
+  < sql/acquire-working-group-in-assessment-report-categories.sql \
+  > output/working-group-in-assessment-report-categories.tsv
+
 ls -l -h output
 echo "Export Complete"
