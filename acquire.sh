@@ -25,6 +25,9 @@ query="mysql --host $host --user $user $passwordParam"
 # change to the script's directory
 cd $(dirname $0)
 
+# create output directory
+mkdir output
+
 echo "Acquire Author Records"
 $query \
   < sql/acquire-author-records.sql \
