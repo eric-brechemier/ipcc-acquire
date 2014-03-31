@@ -1,3 +1,4 @@
+-- export the list of authors, ordered by author id
 USE 'giec';
 SELECT
   authors.id 'id',
@@ -112,4 +113,5 @@ WHERE
   AND institutions.id = participations.institution_id
   AND countries.id = institutions.country_id
 GROUP BY authors.id
+ORDER BY authors.id
 ;
