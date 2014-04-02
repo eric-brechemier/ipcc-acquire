@@ -1,12 +1,13 @@
 -- export the sets of authors in each cumulated working group
 -- of each assessment report: AR1 WG1, AR1 WG1+2, ..., AR5 WG1+2+3.
 
-
 USE 'giec';
+
 -- set limit for the size of a string concatenated with GROUP_CONCAT to a
 -- value larger than the number of authors (<10,000) times the size of
 -- an identifier + separator (<10) multiplied by 2 for good measure.
 SET group_concat_max_len=200000;
+
 SELECT
   CONCAT(
     'AR',
