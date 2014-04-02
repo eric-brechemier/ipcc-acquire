@@ -53,11 +53,6 @@ $query \
   < sql/acquire-assessment-report-categories.sql \
   > output/assessment-report-categories.tsv
 
-echo "Acquire Institution Type Categories"
-$query \
-  < sql/acquire-institution-type-categories.sql \
-  > output/institution-type-categories.tsv
-
 echo "Acquire Institution Categories"
 $query \
   < sql/acquire-institution-categories.sql \
