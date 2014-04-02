@@ -73,7 +73,7 @@ $query \
   < sql/acquire-cumulated-working-group-in-assessment-report-categories.sql \
   > output/cumulated-working-group-in-assessment-report-categories.tsv
 
-echo "Acquire Chapter in each Working Group in each Assessment Report Categories"
+echo "Acquire Chapter in Working Group in Assessment Report Categories"
 $query \
   < sql/acquire-chapter-in-working-group-in-assessment-report-categories.sql \
   > output/chapter-in-working-group-in-assessment-report-categories.tsv
