@@ -24,10 +24,24 @@ SELECT
 FROM
   (
     SELECT
-      COUNT(id) 'total',
-      author_id
-    FROM participations
-    GROUP BY author_id
+      total_contributions.total 'total',
+      author_contributions.author_id 'author_id'
+    FROM
+      (
+        SELECT DISTINCT COUNT(id) 'total'
+        FROM participations
+        GROUP BY author_id
+      ) AS total_contributions
+      ,
+      (
+        SELECT
+          COUNT(id) 'total',
+          author_id
+        FROM participations
+        GROUP BY author_id
+      ) AS author_contributions
+    WHERE
+      author_contributions.total >= total_contributions.total
   ) AS contributions
 GROUP BY contributions.total
 ORDER BY contributions.total
