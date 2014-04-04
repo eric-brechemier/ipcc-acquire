@@ -43,13 +43,6 @@ $query \
   < sql/acquire-total-contributions-categories.sql \
   > output/total-contributions-categories.tsv
 
-
-
-echo "Acquire Total Contributions Categories"
-$query \
-  < sql/acquire-total-contributions-categories.sql \
-  > output/total-contributions-categories.tsv
-
 echo "Acquire Role Categories"
 $query \
   < sql/acquire-role-categories.sql \
