@@ -25,15 +25,48 @@ FROM
   (
     SELECT
       CONCAT(
-        'AR', ar,
-        '.WG', wg,
-        '.', role,
-        '.INC', institution_id,
-        '.x', COUNT(author_id)
+        'AR', participations.ar,
+        '.WG', participations.wg,
+        '.', participations.role,
+        '.AT', institution_countries.institution_id,
+        '.OF', institution_countries.country_id,
+        '.x', COUNT(participations.author_id)
       ) 'name',
       author_id
-    FROM participations
-    GROUP BY ar, wg, role, author_id
+    FROM
+      participations,
+      (
+        SELECT
+          institution_countries.id 'id',
+          institutions.id 'institution_id',
+          institution_countries.country_id 'country_id'
+        FROM
+          (
+            SELECT
+              MIN(id) 'id',
+              name
+            FROM institutions
+            GROUP BY name
+          ) institutions,
+          (
+            SELECT
+              id,
+              name,
+              country_id
+            FROM institutions
+          ) institution_countries
+        WHERE
+          institutions.name = institution_countries.name
+      ) institution_countries
+    WHERE
+      participations.institution_id = institution_countries.id
+    GROUP BY
+      participations.ar,
+      participations.wg,
+      participations.role,
+      institution_countries.institution_id,
+      institution_countries.country_id,
+      participations.author_id
   ) AS contribution_type
 GROUP BY contribution_type.name
 ORDER BY contribution_type.name
