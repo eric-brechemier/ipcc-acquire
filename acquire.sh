@@ -33,6 +33,18 @@ $query \
   < sql/acquire-author-records.sql \
   > output/authors.tsv
 
+echo "Acquire Contribution Type Categories"
+$query \
+  < sql/acquire-contribution-type-categories.sql \
+  > output/contribution-type-categories.tsv
+
+echo "Acquire Total Contributions Categories"
+$query \
+  < sql/acquire-total-contributions-categories.sql \
+  > output/total-contributions-categories.tsv
+
+
+
 echo "Acquire Total Contributions Categories"
 $query \
   < sql/acquire-total-contributions-categories.sql \
