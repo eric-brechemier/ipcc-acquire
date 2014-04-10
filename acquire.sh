@@ -99,22 +99,22 @@ echo 'Acquire Chapter in Working Group in Assessment Report Categories'
 acquire chapter-in-working-group-in-assessment-report-categories
 
 # TODO: DELETE (unused)
-echo 'Acquire Country and Working Group categories'
+echo 'Acquire Country and Working Group Categories'
 acquire country-and-working-group-categories
 
-echo 'Acquire Role in each Working Group categories'
+echo 'Acquire Role in each Working Group Categories'
 acquire role-in-working-group-categories
 
-echo 'Acquire Cumulated Role in Assessment Report categories'
+echo 'Acquire Cumulated Role in Assessment Report Categories'
 acquire cumulated-role-in-assessment-report-categories
 
-echo 'Acquire Cumulated Role in Country Group categories'
+echo 'Acquire Cumulated Role in Country Group Categories'
 acquire cumulated-role-in-country-group-categories
 
-echo 'Acquire Discipline in each Working Group categories'
+echo 'Acquire Discipline in each Working Group Categories'
 acquire discipline-in-working-group-categories
 
-echo 'Acquire Type of Institution in each Working Group categories'
+echo 'Acquire Type of Institution in each Working Group Categories'
 acquire institution-type-in-working-group-categories
 
 ls -l -h output
