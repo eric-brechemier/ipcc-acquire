@@ -48,6 +48,11 @@ $query \
   < sql/acquire-total-contributions-categories.sql \
   > output/total-contributions-categories.tsv
 
+echo 'Acquire Role List'
+$query \
+  < sql/acquire-role-list.sql \
+  > output/role-list.tsv
+
 echo 'Acquire Role Categories'
 $query \
   < sql/acquire-role-categories.sql \
