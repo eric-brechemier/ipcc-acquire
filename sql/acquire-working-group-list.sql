@@ -2,13 +2,20 @@
 
 USE 'giec';
 
-SELECT
-  working_groups.number AS 'name',
-  working_groups.number AS 'value'
-FROM
-  (
-    SELECT DISTINCT number
-    FROM working_groups
-  ) working_groups
-ORDER BY value
+(
+  SELECT
+    'Any WG' AS 'name',
+    '' AS 'value'
+)
+(
+  SELECT
+    working_groups.number AS 'name',
+    working_groups.number AS 'value'
+  FROM
+    (
+      SELECT DISTINCT number
+      FROM working_groups
+    ) working_groups
+  ORDER BY value
+)
 ;
