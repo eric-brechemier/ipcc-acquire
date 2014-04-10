@@ -63,10 +63,20 @@ $query \
   < sql/acquire-working-group-categories.sql \
   > output/working-group-categories.tsv
 
+echo 'Acquire Assessment Reports List'
+$query \
+  < sql/acquire-assessment-report-list.sql \
+  > output/assessment-report-list.tsv
+
 echo 'Acquire Assessment Report Categories'
 $query \
   < sql/acquire-assessment-report-categories.sql \
   > output/assessment-report-categories.tsv
+
+echo 'Acquire Years of Assessment Reports'
+$query \
+  < sql/acquire-assessment-report-years.sql \
+  > output/assessment-report-years.tsv
 
 echo 'Acquire Institution Categories'
 $query \
@@ -112,16 +122,6 @@ echo 'Acquire Type of Institution in each Working Group categories'
 $query \
   < sql/acquire-institution-type-in-working-group-categories.sql \
   > output/institution-type-in-working-group-categories.tsv
-
-echo 'Acquire Assessment Reports List'
-$query \
-  < sql/acquire-assessment-report-list.sql \
-  > output/assessment-report-list.tsv
-
-echo 'Acquire Years of Assessment Reports'
-$query \
-  < sql/acquire-assessment-report-years.sql \
-  > output/assessment-report-years.tsv
 
 ls -l -h output
 echo 'Export Complete'
