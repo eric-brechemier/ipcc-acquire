@@ -7,6 +7,7 @@ USE 'giec';
     'Any WG' AS 'name',
     '' AS 'value'
 )
+UNION
 (
   SELECT
     CONCAT('WG',working_groups.number) AS 'name',
