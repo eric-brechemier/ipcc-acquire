@@ -113,6 +113,11 @@ $query \
   < sql/acquire-institution-type-in-working-group-categories.sql \
   > output/institution-type-in-working-group-categories.tsv
 
+echo 'Acquire Assessment Reports List'
+$query \
+  < sql/acquire-assessment-report-list.sql \
+  > output/assessment-report-list.tsv
+
 echo 'Acquire Years of Assessment Reports'
 $query \
   < sql/acquire-assessment-report-years.sql \
