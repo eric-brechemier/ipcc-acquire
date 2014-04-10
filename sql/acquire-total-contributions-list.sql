@@ -2,6 +2,7 @@
 
 USE 'giec';
 
+-- the default option is the first number of total contributions: '1'
 SELECT
   contributions.total AS 'name',
   contributions.total AS 'value'
