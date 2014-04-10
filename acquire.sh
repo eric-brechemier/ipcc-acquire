@@ -83,6 +83,11 @@ $query \
   < sql/acquire-assessment-report-years.sql \
   > output/assessment-report-years.tsv
 
+echo 'Acquire Institution List'
+$query \
+  < sql/acquire-institution-list.sql \
+  > output/institution-list.tsv
+
 echo 'Acquire Institution Categories'
 $query \
   < sql/acquire-institution-categories.sql \
