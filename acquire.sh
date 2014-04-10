@@ -38,6 +38,11 @@ $query \
   < sql/acquire-contribution-type-categories.sql \
   > output/contribution-type-categories.tsv
 
+echo 'Acquire Total Contributions List'
+$query \
+  < sql/acquire-total-contributions-list.sql \
+  > output/total-contributions-list.tsv
+
 echo 'Acquire Total Contributions Categories'
 $query \
   < sql/acquire-total-contributions-categories.sql \
