@@ -36,114 +36,70 @@ acquire()
 }
 
 echo 'Acquire Author Records'
-$query \
-  < sql/acquire-author-records.sql \
-  > output/authors.tsv
+acquire authors
 
 echo 'Acquire Contribution Type Categories'
-$query \
-  < sql/acquire-contribution-type-categories.sql \
-  > output/contribution-type-categories.tsv
+acquire contribution-type-categories
 
 echo 'Acquire Total Contributions List'
-$query \
-  < sql/acquire-total-contributions-list.sql \
-  > output/total-contributions-list.tsv
+acquire total-contributions-list
 
 echo 'Acquire Total Contributions Categories'
-$query \
-  < sql/acquire-total-contributions-categories.sql \
-  > output/total-contributions-categories.tsv
+acquire total-contributions-categories
 
 echo 'Acquire Role List'
-$query \
-  < sql/acquire-role-list.sql \
-  > output/role-list.tsv
+acquire role-list
 
 echo 'Acquire Role Categories'
-$query \
-  < sql/acquire-role-categories.sql \
-  > output/role-categories.tsv
+acquire role-categories
 
 echo 'Acquire Working Group List'
-$query \
-  < sql/acquire-working-group-list.sql \
-  > output/working-group-list.tsv
+acquire working-group-list
 
 echo 'Acquire Working Group Categories'
-$query \
-  < sql/acquire-working-group-categories.sql \
-  > output/working-group-categories.tsv
+acquire working-group-categories
 
 echo 'Acquire Assessment Reports List'
-$query \
-  < sql/acquire-assessment-report-list.sql \
-  > output/assessment-report-list.tsv
+acquire assessment-report-list
 
 echo 'Acquire Assessment Report Categories'
-$query \
-  < sql/acquire-assessment-report-categories.sql \
-  > output/assessment-report-categories.tsv
+acquire assessment-report-categories
 
 echo 'Acquire Years of Assessment Reports'
-$query \
-  < sql/acquire-assessment-report-years.sql \
-  > output/assessment-report-years.tsv
+acquire assessment-report-years
 
 echo 'Acquire Institution List'
-$query \
-  < sql/acquire-institution-list.sql \
-  > output/institution-list.tsv
+acquire institution-list
 
 echo 'Acquire Institution Categories'
-$query \
-  < sql/acquire-institution-categories.sql \
-  > output/institution-categories.tsv
+acquire institution-categories
 
 echo 'Acquire Country List'
-$query \
-  < sql/acquire-country-list.sql \
-  > output/country-list.tsv
+acquire country-list
 
 echo 'Acquire Country Categories'
-$query \
-  < sql/acquire-country-categories.sql \
-  > output/country-categories.tsv
+acquire country-categories
 
 echo 'Acquire Cumulated Working Group Categories'
-$query \
-  < sql/acquire-cumulated-working-group-categories.sql \
-  > output/cumulated-working-group-categories.tsv
+acquire cumulated-working-group-categories
 
 echo 'Acquire Cumulated Working Group in Assessment Report Categories'
-$query \
-  < sql/acquire-cumulated-working-group-in-assessment-report-categories.sql \
-  > output/cumulated-working-group-in-assessment-report-categories.tsv
+acquire cumulated-working-group-in-assessment-report-categories
 
 echo 'Acquire Chapter in Working Group in Assessment Report Categories'
-$query \
-  < sql/acquire-chapter-in-working-group-in-assessment-report-categories.sql \
-  > output/chapter-in-working-group-in-assessment-report-categories.tsv
+acquire chapter-in-working-group-in-assessment-report-categories
 
 echo 'Acquire Country and Working Group categories'
-$query \
-  < sql/acquire-country-and-working-group-categories.sql \
-  > output/country-and-working-group-categories.tsv
+acquire country-and-working-group-categories
 
 echo 'Acquire Role in each Working Group categories'
-$query \
-  < sql/acquire-role-in-working-group-categories.sql \
-  > output/role-in-working-group-categories.tsv
+acquire role-in-working-group-categories
 
 echo 'Acquire Discipline in each Working Group categories'
-$query \
-  < sql/acquire-discipline-in-working-group-categories.sql \
-  > output/discipline-in-working-group-categories.tsv
+acquire discipline-in-working-group-categories
 
 echo 'Acquire Type of Institution in each Working Group categories'
-$query \
-  < sql/acquire-institution-type-in-working-group-categories.sql \
-  > output/institution-type-in-working-group-categories.tsv
+acquire institution-type-in-working-group-categories
 
 ls -l -h output
 echo 'Export Complete'
