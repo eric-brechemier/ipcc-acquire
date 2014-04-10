@@ -80,20 +80,36 @@ acquire country-list
 echo 'Acquire Country Categories'
 acquire country-categories
 
+echo 'Acquire Country Group Categories'
+acquire country-group-categories
+
 echo 'Acquire Cumulated Working Group Categories'
 acquire cumulated-working-group-categories
 
 echo 'Acquire Cumulated Working Group in Assessment Report Categories'
 acquire cumulated-working-group-in-assessment-report-categories
 
+echo 'Acquire Cumulated Working Group in Country Group Categories'
+acquire cumulated-working-group-in-country-group-categories
+
+echo 'Acquire Cumulated Working Group in Institution Type Categories'
+acquire cumulated-working-group-in-institution-type-categories
+
 echo 'Acquire Chapter in Working Group in Assessment Report Categories'
 acquire chapter-in-working-group-in-assessment-report-categories
 
+# TODO: DELETE (unused)
 echo 'Acquire Country and Working Group categories'
 acquire country-and-working-group-categories
 
 echo 'Acquire Role in each Working Group categories'
 acquire role-in-working-group-categories
+
+echo 'Acquire Cumulated Role in Assessment Report categories'
+acquire cumulated-role-in-assessment-report-categories
+
+echo 'Acquire Cumulated Role in Country Group categories'
+acquire cumulated-role-in-country-group-categories
 
 echo 'Acquire Discipline in each Working Group categories'
 acquire discipline-in-working-group-categories
