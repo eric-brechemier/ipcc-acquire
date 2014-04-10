@@ -28,6 +28,13 @@ cd $(dirname $0)
 # create output directory
 mkdir -p output
 
+acquire()
+{
+  $query \
+    < "sql/acquire-$1.sql" \
+    > "output/$1.tsv"
+}
+
 echo 'Acquire Author Records'
 $query \
   < sql/acquire-author-records.sql \
