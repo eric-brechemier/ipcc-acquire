@@ -93,6 +93,11 @@ $query \
   < sql/acquire-institution-categories.sql \
   > output/institution-categories.tsv
 
+echo 'Acquire Country List'
+$query \
+  < sql/acquire-country-list.sql \
+  > output/country-list.tsv
+
 echo 'Acquire Country Categories'
 $query \
   < sql/acquire-country-categories.sql \
