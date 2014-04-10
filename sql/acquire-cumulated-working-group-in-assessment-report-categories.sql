@@ -28,21 +28,21 @@ SELECT
     DISTINCT ar_working_groups.author_id
   ) 'total_authors'
 FROM
-(
-  SELECT
-    ar,
-    CONCAT(
-      'WG',
-      GROUP_CONCAT(
-        DISTINCT wg
-        ORDER BY wg
-        SEPARATOR '+'
-      )
-    ) wg_name,
-    author_id
-  FROM participations
-  GROUP BY ar, author_id
-) AS ar_working_groups
+  (
+    SELECT
+      ar,
+      CONCAT(
+        'WG',
+        GROUP_CONCAT(
+          DISTINCT wg
+          ORDER BY wg
+          SEPARATOR '+'
+        )
+      ) wg_name,
+      author_id
+    FROM participations
+    GROUP BY ar, author_id
+  ) AS ar_working_groups
 GROUP BY ar_working_groups.ar, ar_working_groups.wg_name
 ORDER BY ar_working_groups.ar, ar_working_groups.wg_name
 ;
