@@ -58,6 +58,11 @@ $query \
   < sql/acquire-role-categories.sql \
   > output/role-categories.tsv
 
+echo 'Acquire Working Group List'
+$query \
+  < sql/acquire-working-group-list.sql \
+  > output/working-group-list.tsv
+
 echo 'Acquire Working Group Categories'
 $query \
   < sql/acquire-working-group-categories.sql \
