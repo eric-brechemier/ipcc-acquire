@@ -103,12 +103,12 @@ $query \
   < sql/acquire-role-in-working-group-categories.sql \
   > output/role-in-working-group-categories.tsv
 
-echo 'Discipline in each Working Group categories'
+echo 'Acquire Discipline in each Working Group categories'
 $query \
   < sql/acquire-discipline-in-working-group-categories.sql \
   > output/discipline-in-working-group-categories.tsv
 
-echo 'Type of Institution in each Working Group categories'
+echo 'Acquire Type of Institution in each Working Group categories'
 $query \
   < sql/acquire-institution-type-in-working-group-categories.sql \
   > output/institution-type-in-working-group-categories.tsv
