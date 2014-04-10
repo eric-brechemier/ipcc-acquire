@@ -5,8 +5,8 @@
 USE 'giec';
 
 SELECT
-  name,
-  MIN(id) 'value'
+  name AS 'name',
+  MIN(id) AS 'value'
 FROM institutions
 GROUP BY name
 ORDER BY value

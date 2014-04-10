@@ -10,8 +10,8 @@ USE 'giec';
 UNION
 (
   SELECT
-    id 'name',
-    id 'value'
+    id AS 'name',
+    id AS 'value'
   FROM assessment_reports
   ORDER BY value
 )

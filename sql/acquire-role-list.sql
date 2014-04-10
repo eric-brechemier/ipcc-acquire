@@ -3,8 +3,8 @@
 USE 'giec';
 
 SELECT
-  CONCAT(name, ' (', symbol, ')') 'name',
-  id 'value'
+  CONCAT(name, ' (', symbol, ')') AS 'name',
+  id AS 'value'
 FROM roles
 ORDER BY value
 ;

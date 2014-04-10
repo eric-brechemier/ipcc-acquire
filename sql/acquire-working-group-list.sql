@@ -3,8 +3,8 @@
 USE 'giec';
 
 SELECT
-  working_groups.number 'name',
-  working_groups.number 'value'
+  working_groups.number AS 'name',
+  working_groups.number AS 'value'
 FROM
   (
     SELECT DISTINCT number

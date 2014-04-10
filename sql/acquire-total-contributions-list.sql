@@ -3,8 +3,8 @@
 USE 'giec';
 
 SELECT
-  contributions.total 'name',
-  contributions.total 'value'
+  contributions.total AS 'name',
+  contributions.total AS 'value'
 FROM
   (
     SELECT DISTINCT COUNT(id) 'total'
