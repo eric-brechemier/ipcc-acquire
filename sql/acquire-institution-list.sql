@@ -4,10 +4,18 @@
 
 USE 'giec';
 
-SELECT
-  name AS 'name',
-  MIN(id) AS 'value'
-FROM institutions
-GROUP BY name
-ORDER BY value
+(
+  SELECT
+    'Any Institution' AS 'name',
+    '' AS 'value'
+)
+UNION
+(
+  SELECT
+    name AS 'name',
+    MIN(id) AS 'value'
+  FROM institutions
+  GROUP BY name
+  ORDER BY value
+)
 ;
