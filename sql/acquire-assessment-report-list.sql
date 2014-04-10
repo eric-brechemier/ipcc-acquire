@@ -10,7 +10,7 @@ USE 'giec';
 UNION
 (
   SELECT
-    id AS 'name',
+    CONCAT('AR',id) AS 'name',
     id AS 'value'
   FROM assessment_reports
   ORDER BY value
