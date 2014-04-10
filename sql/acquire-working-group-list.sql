@@ -9,7 +9,7 @@ USE 'giec';
 )
 (
   SELECT
-    working_groups.number AS 'name',
+    CONCAT('WG',working_groups.number) AS 'name',
     working_groups.number AS 'value'
   FROM
     (
