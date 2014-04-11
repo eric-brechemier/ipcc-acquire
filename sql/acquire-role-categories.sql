@@ -24,7 +24,7 @@ SELECT
 FROM
   (
     SELECT
-      CONCAT(roles.name, ' (', roles.symbol, ')') 'name',
+      roles.name 'name',
       participations.author_id 'author_id'
     FROM
       participations,

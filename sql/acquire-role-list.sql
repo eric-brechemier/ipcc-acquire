@@ -10,7 +10,7 @@ USE 'giec';
 UNION
 (
   SELECT
-    CONCAT(name, ' (', symbol, ')') AS 'name',
+    name AS 'name',
     id AS 'value'
   FROM roles
   ORDER BY value

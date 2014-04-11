@@ -34,8 +34,8 @@ FROM
         ' - ',
         IF(
           COUNT(DISTINCT participations.role) > 1,
-          'Multiple Roles (MULTI)',
-          CONCAT(roles.name,' (',roles.symbol,')') 
+          'Multiple Roles',
+          roles.name
         )
       ) 'name',
       participations.author_id
