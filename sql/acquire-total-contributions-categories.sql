@@ -8,7 +8,14 @@ USE 'giec';
 SET group_concat_max_len=200000;
 
 SELECT
-  contributions.total 'category',
+  CONCAT(
+    contributions.total,
+    IF(
+      contributions.total = 1,
+      ' contribution',
+      ' contributions'
+    )
+  ) 'category',
   CONCAT(
     '[',
       GROUP_CONCAT(

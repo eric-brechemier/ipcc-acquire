@@ -4,7 +4,14 @@ USE 'giec';
 
 -- the default option is the first number of total contributions: '1'
 SELECT
-  contributions.total AS 'name',
+  CONCAT(
+    contributions.total,
+    IF(
+      contributions.total = 1,
+      ' contribution',
+      ' contributions'
+    )
+  ) AS 'name',
   contributions.total AS 'value'
 FROM
   (
