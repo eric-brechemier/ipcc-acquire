@@ -3,7 +3,7 @@
 USE 'giec';
 
 SELECT
-  CONCAT('AR',id) 'ar',
+  CONCAT('AR',id) 'name',
   year
 FROM
   assessment_reports
