@@ -8,111 +8,84 @@ SELECT
   CONCAT(
     '[',
     GROUP_CONCAT(
-      DISTINCT participations.contributions
-      ORDER BY participations.ar
+      cumulated_contributions.cumulated_contributions_code
+      ORDER BY
+        cumulated_contributions.cumulated_contributions_code
       SEPARATOR '|'
     ),
     ']'
   ) 'contributions',
   SUM(
-    participations.total_contributions
-  ) 'total_contributions',
-  CONCAT(
-    '[',
-    GROUP_CONCAT(
-      DISTINCT participations.role
-      ORDER BY participations.role
-      SEPARATOR '|'
-    ),
-    ']'
-  ) 'roles',
-  CONCAT(
-    '[',
-    GROUP_CONCAT(
-      DISTINCT participations.chapters
-      ORDER BY participations.chapters
-      SEPARATOR '|'
-    ),
-    ']'
-  ) 'chapters',
-  CONCAT(
-    '[',
-    GROUP_CONCAT(
-      DISTINCT participations.wg
-      ORDER BY participations.wg
-      SEPARATOR '|'
-    ),
-    ']'
-  ) 'working_groups',
-  CONCAT(
-    '[',
-    GROUP_CONCAT(
-      DISTINCT participations.ar
-      ORDER BY participations.ar
-      SEPARATOR '|'
-    ),
-    ']'
-  ) 'assessment_reports',
-  CONCAT(
-    '[',
-    GROUP_CONCAT(
-      DISTINCT institutions.name
-      ORDER BY institutions.name
-      SEPARATOR '|'
-    ),
-    ']'
-  ) 'institutions',
-  CONCAT(
-    '[',
-    GROUP_CONCAT(
-      DISTINCT countries.name
-      ORDER BY countries.name
-      SEPARATOR '|'
-    ),
-    ']'
-  ) 'countries'
+    cumulated_contributions.cumulated_contributions_number
+  ) AS 'total_contributions'
 FROM
   authors,
   (
     SELECT
-      author_id,
-      ar,
-      wg,
-      role,
-      GROUP_CONCAT(
-        DISTINCT CONCAT(ar,'.',wg,'.',chapter,'.',role)
-        ORDER BY wg, chapter, role
-        SEPARATOR '|'
-      ) 'contributions',
+      contributions.author_id AS 'author_id',
+      CONCAT(
+        contributions.contribution_code,
+        '.x',
+        COUNT(contributions.contribution_code)
+      ) AS 'cumulated_contributions_code',
       COUNT(
-        DISTINCT CONCAT(ar,'.',wg,'.',chapter,'.',role)
-      ) 'total_contributions',
-      GROUP_CONCAT(
-        DISTINCT CONCAT(ar,'.',wg,'.',chapter)
-        ORDER BY wg, chapter
-        SEPARATOR '|'
-      ) 'chapters',
-      institution_id
-    FROM participations
-    GROUP BY author_id, ar
-  ) AS participations,
-  (
-    SELECT
-      id,
-      name,
-      country_id
-    FROM institutions
-  ) AS institutions,
-  (
-    SELECT
-      id,
-      name
-    FROM countries
-  ) AS countries
-WHERE
-  authors.id = participations.author_id
-  AND institutions.id = participations.institution_id
-  AND countries.id = institutions.country_id
+        contributions.contribution_code
+      ) AS 'cumulated_contributions_number'
+    FROM
+      (
+        SELECT
+          participations.author_id AS 'author_id',
+          CONCAT(
+            participations.ar,
+            '.',
+            participations.wg,
+            '.',
+            roles.id,
+            '.',
+            institutions.id,
+            '.',
+            institution_countries.country_id
+          ) AS 'contribution_code'
+        FROM
+          (
+            SELECT
+              author_id,
+              ar,
+              wg,
+              role AS role_symbol,
+              institution_id AS institution_country_id
+            FROM participations
+          ) AS participations,
+          (
+            SELECT
+              id,
+              symbol
+            FROM roles
+          ) AS roles,
+          (
+            SELECT
+              id,
+              name AS institution_name,
+              country_id
+            FROM institutions
+          ) AS institution_countries,
+          (
+            SELECT
+              MIN(id) AS 'id',
+              name
+            FROM institutions
+            GROUP BY name
+          ) AS institutions
+        WHERE
+            participations.role_symbol = roles.symbol
+        AND participations.institution_country_id = institution_countries.id
+        AND institution_countries.institution_name = institutions.name
+      ) AS contributions
+    GROUP BY
+      contributions.author_id,
+      contributions.contribution_code
+  ) AS cumulated_contributions
+WHERE authors.id = cumulated_contributions.author_id
 GROUP BY authors.id
 ORDER BY authors.id
 ;
