@@ -74,6 +74,9 @@ acquire institution-list
 echo 'Acquire Institution Categories'
 acquire institution-categories
 
+echo 'Acquire Institution Type Categories'
+acquire institution-type-categories
+
 echo 'Acquire Country List'
 acquire country-list
 
