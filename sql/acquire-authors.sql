@@ -42,9 +42,11 @@ FROM
             '.',
             roles.id,
             '.',
-            institutions.id,
+            institution_countries.country_id,
             '.',
-            institution_countries.country_id
+            institutions.institution_type_id,
+            '.',
+            institutions.id
           ) AS 'contribution_code'
         FROM
           (
@@ -72,7 +74,8 @@ FROM
           (
             SELECT
               MIN(id) AS 'id',
-              name
+              name,
+              type_id AS institution_type_id
             FROM institutions
             GROUP BY name
           ) AS institutions
