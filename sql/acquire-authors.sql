@@ -8,87 +8,74 @@ SELECT
   CONCAT(
     '[',
     GROUP_CONCAT(
-      cumulated_contributions.cumulated_contributions_code
+      contributions.contribution_code
       ORDER BY
-        cumulated_contributions.cumulated_contributions_code
+        contributions.contribution_code
       SEPARATOR '|'
     ),
     ']'
   ) 'contributions',
-  SUM(
-    cumulated_contributions.cumulated_contributions_number
+  COUNT(
+    contributions.contribution_code
   ) AS 'total_contributions'
 FROM
   authors,
   (
     SELECT
-      contributions.author_id AS 'author_id',
+      participations.author_id AS 'author_id',
       CONCAT(
-        contributions.contribution_code,
-        '.x',
-        COUNT(contributions.contribution_code)
-      ) AS 'cumulated_contributions_code',
-      COUNT(
-        contributions.contribution_code
-      ) AS 'cumulated_contributions_number'
+        participations.ar,
+        '.',
+        participations.wg,
+        '.',
+        participations.chapter,
+        '.',
+        roles.id,
+        '.',
+        institution_countries.country_id,
+        '.',
+        institutions.institution_type_id,
+        '.',
+        institutions.id
+      ) AS 'contribution_code'
     FROM
       (
         SELECT
-          participations.author_id AS 'author_id',
-          CONCAT(
-            participations.ar,
-            '.',
-            participations.wg,
-            '.',
-            roles.id,
-            '.',
-            institution_countries.country_id,
-            '.',
-            institutions.institution_type_id,
-            '.',
-            institutions.id
-          ) AS 'contribution_code'
-        FROM
-          (
-            SELECT
-              author_id,
-              ar,
-              wg,
-              role AS role_symbol,
-              institution_id AS institution_country_id
-            FROM participations
-          ) AS participations,
-          (
-            SELECT
-              id,
-              symbol
-            FROM roles
-          ) AS roles,
-          (
-            SELECT
-              id,
-              name AS institution_name,
-              country_id
-            FROM institutions
-          ) AS institution_countries,
-          (
-            SELECT
-              MIN(id) AS 'id',
-              name,
-              type_id AS institution_type_id
-            FROM institutions
-            GROUP BY name
-          ) AS institutions
-        WHERE
-            participations.role_symbol = roles.symbol
-        AND participations.institution_country_id = institution_countries.id
-        AND institution_countries.institution_name = institutions.name
-      ) AS contributions
-    GROUP BY
-      contributions.author_id,
-      contributions.contribution_code
-  ) AS cumulated_contributions
-WHERE authors.id = cumulated_contributions.author_id
+          author_id,
+          ar,
+          wg,
+          chapter,
+          role AS role_symbol,
+          institution_id AS institution_country_id
+        FROM participations
+      ) AS participations,
+      (
+        SELECT
+          id,
+          symbol
+        FROM roles
+      ) AS roles,
+      (
+        SELECT
+          id,
+          name AS institution_name,
+          country_id
+        FROM institutions
+      ) AS institution_countries,
+      (
+        SELECT
+          MIN(id) AS 'id',
+          name,
+          type_id AS institution_type_id
+        FROM institutions
+        GROUP BY name
+      ) AS institutions
+    WHERE
+        participations.role_symbol = roles.symbol
+    AND participations.institution_country_id = institution_countries.id
+    AND institution_countries.institution_name = institutions.name
+  ) AS contributions
+WHERE authors.id = contributions.author_id
 GROUP BY authors.id
 ORDER BY authors.id
 ;
