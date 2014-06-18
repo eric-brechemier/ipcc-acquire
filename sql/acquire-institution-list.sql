@@ -13,9 +13,8 @@ UNION
 (
   SELECT
     name AS 'name',
-    MIN(id) AS 'value'
+    id AS 'value'
   FROM institutions
-  GROUP BY name
-  ORDER BY value
+  ORDER BY id
 )
 ;

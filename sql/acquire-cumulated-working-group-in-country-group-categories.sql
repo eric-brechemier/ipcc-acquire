@@ -38,11 +38,11 @@ FROM
       participations.author_id
     FROM
       groupings,
-      institutions,
+      institution_countries,
       participations
     WHERE
-          groupings.country_id = institutions.country_id
-      AND institutions.id = participations.institution_id
+          groupings.country_id = institution_countries.country_id
+      AND institution_countries.id = participations.institution_country_id
     GROUP BY
       groupings.symbol,
       participations.author_id

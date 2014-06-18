@@ -46,7 +46,7 @@ FROM
           wg,
           chapter,
           role AS role_symbol,
-          institution_id AS institution_country_id
+          institution_country_id
         FROM participations
       ) AS participations,
       (
@@ -55,25 +55,12 @@ FROM
           symbol
         FROM roles
       ) AS roles,
-      (
-        SELECT
-          id,
-          name AS institution_name,
-          country_id
-        FROM institutions
-      ) AS institution_countries,
-      (
-        SELECT
-          MIN(id) AS 'id',
-          name,
-          type_id AS institution_type_id
-        FROM institutions
-        GROUP BY name
-      ) AS institutions
+      institution_countries,
+      institutions
     WHERE
         participations.role_symbol = roles.symbol
     AND participations.institution_country_id = institution_countries.id
-    AND institution_countries.institution_name = institutions.name
+    AND institution_countries.institution_id = institutions.id
   ) AS contributions
 WHERE authors.id = contributions.author_id
 GROUP BY authors.id

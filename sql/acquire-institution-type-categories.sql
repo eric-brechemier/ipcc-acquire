@@ -28,11 +28,13 @@ FROM
       participations.author_id 'author_id'
     FROM
       participations,
+      institution_countries,
       institutions,
       institution_types
     WHERE
-      participations.institution_id = institutions.id
-      AND institutions.type_id = institution_types.id
+      participations.institution_country_id = institution_countries.id
+      AND institution_countries.institution_id = institutions.id
+      AND institutions.institution_type_id = institution_types.id
     GROUP BY institution_types.id, participations.author_id
   ) AS institution_types
 GROUP BY institution_types.name

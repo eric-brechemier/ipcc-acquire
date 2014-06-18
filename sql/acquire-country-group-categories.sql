@@ -29,11 +29,11 @@ FROM
       participations.author_id 'author_id'
     FROM
       participations,
-      institutions,
+      institution_countries,
       groupings
     WHERE
-          participations.institution_id = institutions.id
-      AND institutions.country_id = groupings.country_id
+          participations.institution_country_id = institution_countries.id
+      AND institution_countries.country_id = groupings.country_id
   ) AS country_groups
 GROUP BY country_groups.name
 ORDER BY country_groups.name

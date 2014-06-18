@@ -39,10 +39,12 @@ FROM
     FROM
       institution_types,
       institutions,
+      institution_countries,
       participations
     WHERE
-          institution_types.id = institutions.type_id
-      AND institutions.id = participations.institution_id
+          institution_types.id = institutions.institution_type_id
+      AND institutions.id = institution_countries.institution_id
+      AND institution_countries.id = participations.institution_country_id
     GROUP BY
       institution_types.id,
       participations.author_id

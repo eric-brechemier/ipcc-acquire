@@ -40,12 +40,12 @@ FROM
       participations.author_id
     FROM
       groupings,
-      institutions,
+      institution_countries,
       participations,
       roles
     WHERE
-          participations.institution_id = institutions.id
-      AND institutions.country_id = groupings.country_id
+          participations.institution_country_id = institution_countries.id
+      AND institution_countries.country_id = groupings.country_id
       AND participations.role = roles.symbol
     GROUP BY
       groupings.symbol,
