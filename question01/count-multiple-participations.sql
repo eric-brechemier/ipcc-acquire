@@ -13,30 +13,15 @@ USE giec
 
 SELECT
   CONCAT(
-    total_participations1.total_ar_participations,
+    cumulated_assessment_reports.total,
     '+'
   ) AS 'Cumulated AR',
-  SUM(total_participations2.total_authors) AS 'Total Authors'
+  SUM(total_participations.total_authors) AS 'Total Authors'
 FROM
 (
-  SELECT
-    total_ar_participations,
-    COUNT(author_id) AS total_authors
-  FROM
-  (
-    SELECT
-      author_id,
-      COUNT(ar) AS total_ar_participations
-    FROM
-    (
-      SELECT author_id, ar
-      FROM participations
-      GROUP BY author_id, ar
-    ) distinct_ar_participations
-    GROUP BY author_id
-  ) ar_participations
-  GROUP BY total_ar_participations
-) total_participations1,
+  SELECT id AS total
+  FROM assessment_reports
+) cumulated_assessment_reports,
 (
   SELECT
     total_ar_participations,
@@ -55,11 +40,11 @@ FROM
     GROUP BY author_id
   ) ar_participations
   GROUP BY total_ar_participations
-) total_participations2
+) total_participations
 WHERE
-  total_participations2.total_ar_participations
+  total_participations.total_ar_participations
   >=
-  total_participations1.total_ar_participations
-GROUP BY total_participations1.total_ar_participations
-ORDER BY total_participations1.total_ar_participations
+  cumulated_assessment_reports.total
+GROUP BY cumulated_assessment_reports.total
+ORDER BY cumulated_assessment_reports.total
 ;
