@@ -36,14 +36,14 @@ answer()
 echo 'Who are the authors that have participated'
 echo 'in more than 1, 2, 3, or 4 assessment reports?'
 answer 01 list-names
-answer 01 count-all
+answer 01 count-multiple-participations
 
 echo 'Who are the authors that have participated'
 echo 'in more than 1, 2, 3, or 4 assessment reports'
 echo 'while holding at least 1 of the 3 elected roles in the IPCC'
 echo 'in each assessment report of participation'
 echo '(Coordinating Lead Author, Lead Author, Review Editor)?'
-answer 02 count-resp
+answer 02 count-multiple-resp-participations
 
 ls -l -h answer*
 echo 'Export Complete'
