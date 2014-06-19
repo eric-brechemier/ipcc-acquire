@@ -61,4 +61,5 @@ WHERE
   >=
   total_participations1.total_ar_participations
 GROUP BY total_participations1.total_ar_participations
+ORDER BY total_participations1.total_ar_participations
 ;
