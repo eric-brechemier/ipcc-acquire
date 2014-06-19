@@ -12,20 +12,50 @@ USE giec
 -- * 5  assessment reports
 
 SELECT
-  total_ar_participations,
-  COUNT(author_id) AS total_authors
+  total_participations1.total_ar_participations AS 'Cumulated AR',
+  SUM(total_participations2.total_authors) AS 'Total Authors'
 FROM
 (
   SELECT
-    author_id,
-    COUNT(ar) AS total_ar_participations
+    total_ar_participations,
+    COUNT(author_id) AS total_authors
   FROM
   (
-    SELECT author_id, ar
-    FROM participations
-    GROUP BY author_id, ar
-  ) distinct_ar_participations
-  GROUP BY author_id
-) ar_participations
-GROUP BY total_ar_participations
+    SELECT
+      author_id,
+      COUNT(ar) AS total_ar_participations
+    FROM
+    (
+      SELECT author_id, ar
+      FROM participations
+      GROUP BY author_id, ar
+    ) distinct_ar_participations
+    GROUP BY author_id
+  ) ar_participations
+  GROUP BY total_ar_participations
+) total_participations1,
+(
+  SELECT
+    total_ar_participations,
+    COUNT(author_id) AS total_authors
+  FROM
+  (
+    SELECT
+      author_id,
+      COUNT(ar) AS total_ar_participations
+    FROM
+    (
+      SELECT author_id, ar
+      FROM participations
+      GROUP BY author_id, ar
+    ) distinct_ar_participations
+    GROUP BY author_id
+  ) ar_participations
+  GROUP BY total_ar_participations
+) total_participations2
+WHERE
+  total_participations2.total_ar_participations
+  >=
+  total_participations1.total_ar_participations
+GROUP BY total_participations1.total_ar_participations
 ;
