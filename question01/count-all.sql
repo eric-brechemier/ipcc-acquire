@@ -12,7 +12,10 @@ USE giec
 -- * 5  assessment reports
 
 SELECT
-  total_participations1.total_ar_participations AS 'Cumulated AR',
+  CONCAT(
+    total_participations1.total_ar_participations,
+    '+'
+  ) AS 'Cumulated AR',
   SUM(total_participations2.total_authors) AS 'Total Authors'
 FROM
 (
