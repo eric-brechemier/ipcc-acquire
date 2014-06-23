@@ -37,6 +37,7 @@ echo 'Who are the authors that have participated'
 echo 'in more than 1, 2, 3, or 4 assessment reports?'
 answer 01 list-names
 answer 01 count-multiple-participations
+answer 01 count-multiple-participations-by-wmo-country-group
 
 echo 'Who are the authors that have participated'
 echo 'in more than 1, 2, 3, or 4 assessment reports'
