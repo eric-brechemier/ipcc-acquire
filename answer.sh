@@ -71,5 +71,14 @@ answer 02 count-total-resp-participations-by-country
 ls -l -h -o answer02
 
 echo '*******************************************************'
+echo 'Q3.'
+echo 'Who are the authors that have participated in'
+echo 'more than one working group (what we call bridge authors)?'
+echo '*******************************************************'
+echo 'Answers:'
+answer 03 list-bridge-author-names
+ls -l -h -o answer03
+
+echo '*******************************************************'
 echo 'Export Complete'
 echo '*******************************************************'
