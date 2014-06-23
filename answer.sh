@@ -47,6 +47,7 @@ answer 01 count-multiple-participations-by-cli-country-group
 answer 01 count-multiple-participations-by-institution
 answer 01 count-multiple-participations-by-institution-type
 answer 01 count-multiple-participations-by-working-group
+answer 01 count-multiple-participations-by-country
 ls -l -h -o answer01
 
 echo '*******************************************************'
