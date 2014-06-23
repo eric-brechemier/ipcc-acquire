@@ -44,6 +44,7 @@ answer 01 count-multiple-participations
 answer 01 count-multiple-participations-by-wmo-country-group
 answer 01 count-multiple-participations-by-eco-country-group
 answer 01 count-multiple-participations-by-cli-country-group
+answer 01 count-multiple-participations-by-institution
 ls -l -h -o answer01
 
 echo '*******************************************************'
