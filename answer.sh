@@ -65,6 +65,7 @@ answer 02 count-multiple-resp-participations-by-eco-country-group
 answer 02 count-multiple-resp-participations-by-cli-country-group
 answer 02 count-multiple-resp-participations-by-institution
 answer 02 count-multiple-resp-participations-by-institution-type
+answer 02 count-multiple-resp-participations-by-working-group
 ls -l -h -o answer02
 
 echo '*******************************************************'
