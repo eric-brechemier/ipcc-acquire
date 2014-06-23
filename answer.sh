@@ -79,6 +79,9 @@ echo 'Answers:'
 answer 03 list-bridge-author-names
 answer 03 list-bridge-authors-by-country
 answer 03 list-bridge-authors-by-institution
+answer 03 count-bridge-authors-by-wmo-country-group
+answer 03 count-bridge-authors-by-eco-country-group
+answer 03 count-bridge-authors-by-cli-country-group
 ls -l -h -o answer03
 
 echo '*******************************************************'
