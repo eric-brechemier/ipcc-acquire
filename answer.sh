@@ -33,20 +33,31 @@ answer()
     > "answer$1/$2.tsv"
 }
 
+echo '*******************************************************'
+echo 'Q1.'
 echo 'Who are the authors that have participated'
 echo 'in more than 1, 2, 3, or 4 assessment reports?'
+echo '*******************************************************'
+echo 'Answers:'
 answer 01 list-names
 answer 01 count-multiple-participations
 answer 01 count-multiple-participations-by-wmo-country-group
 answer 01 count-multiple-participations-by-eco-country-group
 answer 01 count-multiple-participations-by-cli-country-group
+ls -l -h -o answer01
 
+echo '*******************************************************'
+echo 'Q2.'
 echo 'Who are the authors that have participated'
 echo 'in more than 1, 2, 3, or 4 assessment reports'
 echo 'while holding at least 1 of the 3 elected roles in the IPCC'
 echo 'in each assessment report of participation'
 echo '(Coordinating Lead Author, Lead Author, Review Editor)?'
+echo '*******************************************************'
+echo 'Answers:'
 answer 02 count-multiple-resp-participations
+ls -l -h -o answer02
 
-ls -l -h answer*
+echo '*******************************************************'
 echo 'Export Complete'
+echo '*******************************************************'
