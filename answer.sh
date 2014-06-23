@@ -55,6 +55,7 @@ echo 'in each assessment report of participation'
 echo '(Coordinating Lead Author, Lead Author, Review Editor)?'
 echo '*******************************************************'
 echo 'Answers:'
+answer 02 list-resp-names
 answer 02 count-multiple-resp-participations
 ls -l -h -o answer02
 
