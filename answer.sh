@@ -67,6 +67,7 @@ answer 02 count-cumulated-resp-participations-by-cli-country-group
 answer 02 count-total-resp-participations-by-institution
 answer 02 count-cumulated-resp-participations-by-institution-type
 answer 02 count-cumulated-resp-participations-by-working-group
+answer 02 count-total-resp-participations-by-country
 ls -l -h -o answer02
 
 echo '*******************************************************'
