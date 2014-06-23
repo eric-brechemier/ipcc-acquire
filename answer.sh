@@ -40,14 +40,14 @@ echo 'in more than 1, 2, 3, or 4 assessment reports?'
 echo '*******************************************************'
 echo 'Answers:'
 answer 01 list-names
-answer 01 count-multiple-participations
-answer 01 count-multiple-participations-by-wmo-country-group
-answer 01 count-multiple-participations-by-eco-country-group
-answer 01 count-multiple-participations-by-cli-country-group
-answer 01 count-multiple-participations-by-institution
-answer 01 count-multiple-participations-by-institution-type
-answer 01 count-multiple-participations-by-working-group
-answer 01 count-multiple-participations-by-country
+answer 01 count-cumulated-participations
+answer 01 count-cumulated-participations-by-wmo-country-group
+answer 01 count-cumulated-participations-by-eco-country-group
+answer 01 count-cumulated-participations-by-cli-country-group
+answer 01 count-total-participations-by-institution
+answer 01 count-cumulated-participations-by-institution-type
+answer 01 count-cumulated-participations-by-working-group
+answer 01 count-total-participations-by-country
 ls -l -h -o answer01
 
 echo '*******************************************************'
@@ -60,13 +60,13 @@ echo '(Coordinating Lead Author, Lead Author, Review Editor)?'
 echo '*******************************************************'
 echo 'Answers:'
 answer 02 list-resp-names
-answer 02 count-multiple-resp-participations
-answer 02 count-multiple-resp-participations-by-wmo-country-group
-answer 02 count-multiple-resp-participations-by-eco-country-group
-answer 02 count-multiple-resp-participations-by-cli-country-group
-answer 02 count-multiple-resp-participations-by-institution
-answer 02 count-multiple-resp-participations-by-institution-type
-answer 02 count-multiple-resp-participations-by-working-group
+answer 02 count-cumulated-resp-participations
+answer 02 count-cumulated-resp-participations-by-wmo-country-group
+answer 02 count-cumulated-resp-participations-by-eco-country-group
+answer 02 count-cumulated-resp-participations-by-cli-country-group
+answer 02 count-total-resp-participations-by-institution
+answer 02 count-cumulated-resp-participations-by-institution-type
+answer 02 count-cumulated-resp-participations-by-working-group
 ls -l -h -o answer02
 
 echo '*******************************************************'
