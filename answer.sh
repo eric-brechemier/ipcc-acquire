@@ -96,5 +96,14 @@ answer 04 list-bridge-authors-by-chapter-type
 ls -l -h -o answer04
 
 echo '*******************************************************'
+echo 'Q5.'
+echo 'What kind of roles do the authors who participate'
+echo 'in more than one working group occupy?'
+echo '*******************************************************'
+echo 'Answers:'
+answer 05 list-bridge-authors-by-role
+ls -l -h -o answer05
+
+echo '*******************************************************'
 echo 'Export Complete'
 echo '*******************************************************'
