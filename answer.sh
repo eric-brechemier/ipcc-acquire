@@ -57,6 +57,9 @@ echo '*******************************************************'
 echo 'Answers:'
 answer 02 list-resp-names
 answer 02 count-multiple-resp-participations
+answer 02 count-multiple-resp-participations-by-wmo-country-group
+answer 02 count-multiple-resp-participations-by-eco-country-group
+answer 02 count-multiple-resp-participations-by-cli-country-group
 ls -l -h -o answer02
 
 echo '*******************************************************'
