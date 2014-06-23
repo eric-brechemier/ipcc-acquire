@@ -78,6 +78,7 @@ echo '*******************************************************'
 echo 'Answers:'
 answer 03 list-bridge-author-names
 answer 03 list-bridge-authors-by-country
+answer 03 list-bridge-authors-by-institution
 ls -l -h -o answer03
 
 echo '*******************************************************'
