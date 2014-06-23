@@ -77,6 +77,7 @@ echo 'more than one working group (what we call bridge authors)?'
 echo '*******************************************************'
 echo 'Answers:'
 answer 03 list-bridge-author-names
+answer 03 list-bridge-authors-by-country
 ls -l -h -o answer03
 
 echo '*******************************************************'
