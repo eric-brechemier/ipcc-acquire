@@ -13,7 +13,7 @@ USE giec
 SELECT
   COUNT(
     resp_distinct_ar_participations.ar
-  ) AS 'AR Participations',
+  ) AS 'Total AR',
   CONCAT(
     authors.first_name,
     ' ',
@@ -50,5 +50,5 @@ FROM
   ) resp_distinct_ar_participations
 WHERE authors.id = resp_distinct_ar_participations.author_id
 GROUP BY resp_distinct_ar_participations.author_id
-ORDER BY `AR Participations` DESC, authors.last_name
+ORDER BY `Total AR` DESC, authors.last_name
 ;
