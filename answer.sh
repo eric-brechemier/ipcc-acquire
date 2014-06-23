@@ -105,5 +105,25 @@ answer 05 list-bridge-authors-by-role
 ls -l -h -o answer05
 
 echo '*******************************************************'
+echo 'Q13.'
+echo 'Which countries have increased their participation in the IPCC'
+echo 'and which have decreased their participation over time?'
+echo '*******************************************************'
+echo 'Answers:'
+answer 13 count-authors-by-country-and-ar
+answer 13 list-authors-and-roles-by-country-and-ar
+ls -l -h -o answer13
+
+echo '*******************************************************'
+echo 'Q14.'
+echo 'Which institutions have increased or decreased the most'
+echo 'in participation over time?'
+echo '*******************************************************'
+echo 'Answers:'
+answer 14 count-authors-by-institution-and-ar
+answer 14 list-authors-and-roles-by-institution-and-ar
+ls -l -h -o answer14
+
+echo '*******************************************************'
 echo 'Export Complete'
 echo '*******************************************************'
