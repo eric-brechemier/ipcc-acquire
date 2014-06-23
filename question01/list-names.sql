@@ -5,16 +5,16 @@
 USE giec
 
 SELECT
-  total AS 'AR Participations',
-  name AS 'Author Name'
-FROM
-(
-  SELECT
-    CONCAT( authors.first_name, ' ', authors.last_name ) AS name,
-    COUNT( DISTINCT participations.ar ) AS total
-  FROM authors, participations
-  WHERE authors.id = participations.author_id
-  GROUP BY participations.author_id
-  ORDER BY total DESC, authors.last_name
-) author_participations
+  COUNT(
+    DISTINCT participations.ar
+  ) AS 'AR Participations',
+  CONCAT(
+    authors.first_name,
+    ' ',
+    authors.last_name
+  ) AS 'Author Name'
+FROM authors, participations
+WHERE authors.id = participations.author_id
+GROUP BY participations.author_id
+ORDER BY `AR Participations` DESC, authors.last_name
 ;
