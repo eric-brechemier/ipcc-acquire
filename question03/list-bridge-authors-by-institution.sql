@@ -9,7 +9,7 @@ USE giec
 SELECT
   institutions.name AS 'Institution',
   CONCAT( 'WG', cumulated_wg ) AS 'Cumulated WG',
-  CONCAT( first_name, ' ', last_name ) AS 'Author Name'
+  CONCAT( first_name, ' ', last_name ) AS 'Bridge Author Name'
 FROM
   (
     SELECT
