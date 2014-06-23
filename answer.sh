@@ -85,5 +85,16 @@ answer 03 count-bridge-authors-by-cli-country-group
 ls -l -h -o answer03
 
 echo '*******************************************************'
+echo 'Q4.'
+echo 'Are there particular chapters of the IPCC'
+echo 'where these bridge authors tend to aggregate'
+echo '(i.e. around particular themes)?'
+echo '*******************************************************'
+echo 'Answers:'
+answer 04 list-bridge-authors-by-chapter
+answer 04 list-bridge-authors-by-chapter-type
+ls -l -h -o answer04
+
+echo '*******************************************************'
 echo 'Export Complete'
 echo '*******************************************************'
