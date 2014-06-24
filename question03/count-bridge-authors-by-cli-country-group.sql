@@ -4,12 +4,14 @@
 
 USE giec
 
--- IN EACH CLI (Climate) COUNTRY GROUP
+-- In each cumulated working group,
 -- count the total number of bridge authors
+-- IN EACH CLI (Climate) COUNTRY GROUP
 
 SELECT
-  cli_country_groups.name AS 'CLI Country Group',
-  COUNT( bridge_authors.author_id ) AS 'Total Bridge Authors'
+  CONCAT( 'WG', cumulated_wg ) AS 'Cumulated WG',
+  COUNT( bridge_authors.author_id ) AS 'Total Bridge Authors',
+  cli_country_groups.name AS 'CLI Country Group'
 FROM
   (
     SELECT
@@ -36,6 +38,6 @@ WHERE bridge_authors.author_id = participations.author_id
 AND participations.institution_country_id = institution_countries.id
 AND institution_countries.country_id = country_country_group.country_id
 AND country_country_group.symbol = cli_country_groups.symbol
-GROUP BY cli_country_groups.id
-ORDER BY `Total Bridge Authors` DESC, `CLI Country Group`
+GROUP BY cumulated_wg, cli_country_groups.id
+ORDER BY total_wg DESC, cumulated_wg, `Total Bridge Authors` DESC
 ;

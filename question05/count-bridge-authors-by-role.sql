@@ -4,11 +4,14 @@
 
 USE giec
 
--- COUNT BRIDGE AUTHORS IN EACH ROLE
+-- In each cumulated working group,
+-- count the total number of bridge authors
+-- IN EACH ROLE
 
 SELECT
-  roles.name AS 'Role',
-  COUNT( participations.author_id ) AS 'Total Bridge Authors'
+  CONCAT( 'WG', cumulated_wg ) AS 'Cumulated WG',
+  COUNT( participations.author_id ) AS 'Total Bridge Authors',
+  roles.name AS 'Role'
 FROM
   (
     SELECT
@@ -27,6 +30,6 @@ FROM
   roles
 WHERE bridge_authors.author_id = participations.author_id
 AND participations.role = roles.symbol
-GROUP BY roles.id
-ORDER BY `Total Bridge Authors` DESC
+GROUP BY cumulated_wg, roles.id
+ORDER BY total_wg DESC, cumulated_wg, `Total Bridge Authors` DESC
 ;
