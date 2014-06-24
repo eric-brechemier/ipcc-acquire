@@ -20,7 +20,7 @@ USE giec
 
 SELECT
   total_ar_participations AS 'Total AR',
-  COUNT(author_id) AS 'Total Authors',
+  COUNT(author_id) AS 'Total RESP Authors',
   countries.name AS 'Country'
 FROM
   (

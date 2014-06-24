@@ -20,7 +20,7 @@ USE giec
 
 SELECT
   CONCAT(total_ar,'+') AS 'Cumulated AR',
-  total_authors AS 'Total Authors',
+  total_authors AS 'Total RESP Authors',
   institution_types.name AS 'Institution Type'
 FROM
   (

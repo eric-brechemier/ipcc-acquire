@@ -20,7 +20,7 @@ USE giec
 
 SELECT
   CONCAT(total_ar,'+') AS 'Cumulated AR',
-  total_authors AS 'Total Authors',
+  total_authors AS 'Total RESP Authors',
   groups.name AS 'ECO Country Group'
 FROM
   (

@@ -25,7 +25,7 @@ SELECT
   ) AS 'Cumulated AR',
   SUM(
     wg_total_participations.total_authors
-  ) AS 'Total Authors',
+  ) AS 'Total RESP Authors',
   CONCAT(
     'WG',
     wg
