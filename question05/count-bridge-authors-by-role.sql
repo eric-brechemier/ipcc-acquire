@@ -4,11 +4,11 @@
 
 USE giec
 
--- LIST BRIDGE AUTHORS IN EACH ROLE
+-- COUNT BRIDGE AUTHORS IN EACH ROLE
 
 SELECT
   roles.name AS 'Role',
-  CONCAT( first_name, ' ', last_name ) AS 'Bridge Author Name'
+  COUNT( participations.author_id ) AS 'Total Bridge Authors'
 FROM
   (
     SELECT
@@ -23,12 +23,10 @@ FROM
     GROUP BY author_id
     HAVING total_wg > 1
   ) bridge_authors,
-  authors,
   participations,
   roles
-WHERE bridge_authors.author_id = authors.id
-AND bridge_authors.author_id = participations.author_id
+WHERE bridge_authors.author_id = participations.author_id
 AND participations.role = roles.symbol
-GROUP BY roles.id, authors.id
-ORDER BY roles.id, authors.last_name
+GROUP BY roles.id
+ORDER BY `Total Bridge Authors` DESC
 ;
