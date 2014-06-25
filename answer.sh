@@ -105,6 +105,15 @@ answer 05 count-bridge-authors-by-role
 ls -l -h -o answer05
 
 echo '*******************************************************'
+echo 'Q12.'
+echo 'Where are French authors on the IPCC?'
+echo 'To which chapters do they contribute the most?'
+echo '*******************************************************'
+echo 'Answers:'
+answer 12 list-french-author-participations
+ls -l -h -o answer12
+
+echo '*******************************************************'
 echo 'Q13.'
 echo 'Which countries have increased their participation in the IPCC'
 echo 'and which have decreased their participation over time?'
