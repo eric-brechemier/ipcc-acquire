@@ -11,7 +11,6 @@ USE giec
 --        in EVERY assessment report of participation
 
 -- Count the RESP authors who contributed to:
--- * 1+ assessment reports
 -- * 2+ assessment reports
 -- * 3+ assessment reports
 -- * 4+ assessment reports
@@ -74,5 +73,6 @@ WHERE
   >=
   cumulated_assessment_reports.total
 GROUP BY cumulated_assessment_reports.total
+HAVING cumulated_assessment_reports.total >= 2
 ORDER BY cumulated_assessment_reports.total
 ;
