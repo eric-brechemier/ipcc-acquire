@@ -5,20 +5,30 @@
 
 USE giec
 
--- LIST BRIDGE AUTHORS IN EACH CHAPTER
+-- FOR EACH BRIDGE AUTHOR,
+-- list the distinct pairs of chapters in distinct working groups
+-- (data to be imported in Table 2 Net as CSV,
+--  then in Gephi to create a network)
 
 SELECT
+  CONCAT( 'WG', cumulated_wg ) 'Cumulated Working Group',
+  CONCAT( first_name, ' ', last_name ) AS 'Bridge Author Name',
   CONCAT(
     'AR',
-    chapters.ar,
+    participations1.ar,
     '.WG',
-    chapters.wg,
+    participations1.wg,
     '.',
-    chapters.number,
-    ': ',
-    chapters.title
-  ) AS 'Chapter',
-  CONCAT( first_name, ' ', last_name ) AS 'Bridge Author Name'
+    participations1.chapter
+  ) AS 'Chapter 1',
+  CONCAT(
+    'AR',
+    participations2.ar,
+    '.WG',
+    participations2.wg,
+    '.',
+    participations2.chapter
+  ) AS 'Chapter 2'
 FROM
   (
     SELECT
@@ -34,13 +44,24 @@ FROM
     HAVING total_wg > 1
   ) bridge_authors,
   authors,
-  participations,
-  chapters
+  participations AS participations1,
+  participations AS participations2
 WHERE bridge_authors.author_id = authors.id
-AND bridge_authors.author_id = participations.author_id
-AND participations.ar = chapters.ar
-AND participations.wg = chapters.wg
-AND participations.chapter = chapters.number
-GROUP BY chapters.id, authors.id
-ORDER BY chapters.ar, chapters.wg, chapters.id, authors.last_name
+AND bridge_authors.author_id = participations1.author_id
+AND bridge_authors.author_id = participations2.author_id
+AND participations1.wg < participations2.wg
+AND (
+  participations1.chapter < participations2.chapter
+  OR participations1.ar < participations2.ar
+)
+ORDER BY
+  total_wg DESC,
+  cumulated_wg,
+  authors.last_name,
+  participations1.wg,
+  participations1.chapter,
+  participations1.ar,
+  participations2.wg,
+  participations2.chapter,
+  participations2.ar
 ;
