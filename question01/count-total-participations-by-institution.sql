@@ -13,7 +13,7 @@ USE giec
 -- * 5 assessment reports
 
 SELECT
-  total_ar_participations AS 'Total AR',
+  total_ar_participations AS 'Total AR Participations',
   COUNT(author_id) AS 'Total Authors',
   institutions.name AS 'Institution'
 FROM
