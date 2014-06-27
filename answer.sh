@@ -44,6 +44,7 @@ answer 01 count-cumulated-participations
 answer 01 count-cumulated-participations-by-wmo-country-group
 answer 01 count-cumulated-participations-by-eco-country-group
 answer 01 count-cumulated-participations-by-cli-country-group
+answer 01 list-cumulated-participations-by-institution
 answer 01 count-cumulated-participations-by-institution
 answer 01 count-cumulated-participations-by-institution-type
 answer 01 count-cumulated-participations-by-working-group
