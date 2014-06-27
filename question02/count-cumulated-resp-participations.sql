@@ -18,8 +18,9 @@ USE giec
 
 SELECT
   CONCAT(
+    '≥',
     cumulated_assessment_reports.total,
-    '+'
+    'AR'
   ) AS 'Cumulated AR',
   SUM(resp_total_participations.total_authors) AS 'Total RESP Authors'
 FROM

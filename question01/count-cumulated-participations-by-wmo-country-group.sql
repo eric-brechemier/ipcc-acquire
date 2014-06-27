@@ -13,7 +13,7 @@ USE giec
 -- * 5  assessment reports
 
 SELECT
-  CONCAT(total_ar,'+') AS 'Cumulated AR',
+  CONCAT('≥',total_ar,'AR') AS 'Cumulated AR',
   total_authors AS 'Total Authors',
   groups.name AS 'WMO Country Group'
 FROM
