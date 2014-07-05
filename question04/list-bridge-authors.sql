@@ -20,6 +20,7 @@ SELECT
   GROUP_CONCAT(
     DISTINCT institution_types.name
     ORDER BY institution_types.name
+    SEPARATOR ';'
   ) AS 'Institution Types',
   COUNT(
     DISTINCT participations.ar
