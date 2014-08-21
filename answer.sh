@@ -1,4 +1,3 @@
-#! /bin/sh
 # Prepare answers to questions about IPCC authors, in TSV format
 #
 # USAGE:
@@ -154,6 +153,15 @@ echo 'Answers:'
 answer 14 count-authors-by-institution-and-ar
 answer 14 list-authors-and-roles-by-institution-and-ar
 ls -l -h -o answer14
+
+echo '*******************************************************'
+echo 'Q15.'
+echo '*******************************************************'
+echo 'What are the differences in diversity (by country and by institution)'
+echo 'between the working groups?'
+echo '*******************************************************'
+answer 15 count-participations-by-ar-author-role-institution-country
+ls -l -h -o answer15
 
 echo '*******************************************************'
 echo 'Export Complete'
