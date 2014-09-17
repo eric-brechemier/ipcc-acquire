@@ -132,6 +132,8 @@ echo 'To which chapters do they contribute the most?'
 echo '*******************************************************'
 echo 'Answers:'
 answer 12 list-french-author-participations
+answer 12 compute-participation-ratio-relative-to-other-countries-per-country-and-chapter
+answer 12 compute-participation-ratio-relative-to-working-group-per-country-and-chapter
 ls -l -h -o answer12
 
 echo '*******************************************************'
