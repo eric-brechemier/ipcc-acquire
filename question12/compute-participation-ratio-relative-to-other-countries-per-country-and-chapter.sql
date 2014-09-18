@@ -18,8 +18,19 @@ SELECT
   participations.ar AS 'AR',
   participations.wg AS 'WG',
   participations.chapter AS 'Chapter',
-  COUNT(participations.id) AS 'Country Participation',
-  chapter_participations.total AS 'Total Participation',
+  COUNT(participations.id) AS 'Country Participations',
+  chapter_participations.total AS 'Total Participations',
+  CONCAT(
+    countries.name,
+    ' AR ',
+    participations.ar,
+    ' WG ',
+    participations.wg,
+    '.',
+    participations.chapter,
+    ': ',
+    chapters.title
+  ) AS 'Label',
   (
     COUNT(participations.id)
     / chapter_participations.total
@@ -29,6 +40,7 @@ FROM
   countries,
   institution_countries,
   participations,
+  chapters,
   (
     SELECT
       participations.ar AS ar,
@@ -50,6 +62,9 @@ FROM
 WHERE
   countries.id = institution_countries.country_id
   AND participations.institution_country_id = institution_countries.id
+  AND participations.ar = chapters.ar
+  AND participations.wg = chapters.wg
+  AND participations.chapter = chapters.number
   AND participations.ar = chapter_participations.ar
   AND participations.wg = chapter_participations.wg
   AND participations.chapter = chapter_participations.chapter
