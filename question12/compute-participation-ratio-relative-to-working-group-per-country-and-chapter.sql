@@ -6,7 +6,7 @@ USE giec
 
 -- FOR EACH country,
 -- FOR EACH chapter of each working group's assessment report,
--- compute the percentage of
+-- compute the ratio of
 -- participations from the country in this chapter
 -- relative to
 -- the total participation of this country in this working group
@@ -33,8 +33,7 @@ SELECT
   (
     COUNT(participations.id)
     / country_wg_participations.total
-    * 100
-  ) AS 'Percentage'
+  ) AS 'Ratio'
 FROM
   countries,
   institution_countries,
@@ -76,5 +75,5 @@ ORDER BY
   countries.name,
   participations.ar,
   participations.wg,
-  Percentage DESC
+  Ratio DESC
 ;
