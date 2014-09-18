@@ -13,17 +13,17 @@ USE giec
 -- in the same assessment report.
 
 SELECT
-  countries.name AS name,
-  participations.ar AS AR,
-  participations.wg AS WG,
-  participations.chapter AS chapter,
-  COUNT(participations.id) AS chapter_total,
-  country_wg_participations.total AS wg_total,
+  countries.name AS 'Country',
+  participations.ar AS 'AR',
+  participations.wg AS 'WG',
+  participations.chapter AS 'Chapter',
+  COUNT(participations.id) AS 'Chapter Participation',
+  country_wg_participations.total AS 'WG Participation',
   (
     COUNT(participations.id)
     / country_wg_participations.total
     * 100
-  ) AS percentage
+  ) AS 'Percentage'
 FROM
   countries,
   institution_countries,
@@ -61,5 +61,5 @@ ORDER BY
   countries.name,
   participations.ar,
   participations.wg,
-  percentage DESC
+  Percentage DESC
 ;

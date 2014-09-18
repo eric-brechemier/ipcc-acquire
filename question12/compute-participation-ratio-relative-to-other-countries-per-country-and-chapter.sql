@@ -14,17 +14,17 @@ USE giec
 -- participation ratio (descending)
 
 SELECT
-  countries.name AS name,
-  participations.ar AS AR,
-  participations.wg AS WG,
-  participations.chapter AS chapter,
-  COUNT(participations.id) AS country_total,
-  chapter_participations.total AS all_countries_total,
+  countries.name AS 'Country',
+  participations.ar AS 'AR',
+  participations.wg AS 'WG',
+  participations.chapter AS 'Chapter',
+  COUNT(participations.id) AS 'Country Participation',
+  chapter_participations.total AS 'Total Participation',
   (
     COUNT(participations.id)
     / chapter_participations.total
     * 100
-  ) AS percentage
+  ) AS 'Percentage'
 FROM
   countries,
   institution_countries,
@@ -62,5 +62,5 @@ ORDER BY
   countries.name,
   participations.ar,
   participations.wg,
-  percentage DESC
+  Percentage DESC
 ;
