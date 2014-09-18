@@ -5,15 +5,15 @@
 USE giec
 
 SELECT
-  authors.first_name,
-  authors.last_name,
-  participations.ar,
-  participations.wg,
-  participations.chapter,
-  participations.role,
-  institutions.name,
-  institution_types.name,
-  countries.name
+  authors.first_name AS 'First Name',
+  authors.last_name AS 'Last Name',
+  participations.ar AS 'AR',
+  participations.wg AS 'WG',
+  participations.chapter AS 'Chapter',
+  participations.role AS 'Role',
+  institutions.name AS 'Institution',
+  institution_types.name AS 'Institution Type',
+  countries.name AS 'Country'
 FROM
   authors,
   participations,
