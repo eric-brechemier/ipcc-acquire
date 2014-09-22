@@ -28,7 +28,7 @@ USE giec
 -- * Bridge of Working Groups I+II+III
 -- 3 x min(wg1, wg2, wg3)
 --
--- ordered by the latter ratio (descending),
+-- ordered by each ratio in turn (descending),
 -- then by total participations (descending),
 -- then by last name and first name
 
@@ -103,6 +103,12 @@ WHERE
   authors.id = bridge_participations.author_id
 ORDER BY
   bridge123 DESC,
+  bridge12 DESC,
+  bridge13 DESC,
+  bridge23 DESC,
+  wg1 DESC,
+  wg2 DESC,
+  wg3 DESC,
   total DESC,
   last_name,
   first_name
