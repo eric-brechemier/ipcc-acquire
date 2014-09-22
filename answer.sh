@@ -95,6 +95,7 @@ echo 'more than one working group (what we call bridge authors)?'
 echo '*******************************************************'
 echo 'Answers:'
 answer 03 list-bridge-author-names
+answer 03 compute-working-group-membership-ratios
 answer 03 list-bridge-authors-by-country
 answer 03 list-bridge-authors-by-institution
 answer 03 count-bridge-authors-by-wmo-country-group
