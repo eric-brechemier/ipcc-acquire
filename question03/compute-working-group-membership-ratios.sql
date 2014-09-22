@@ -49,20 +49,20 @@ FROM
     SELECT
       author_id,
       total,
-      wg1,
-      wg2,
-      wg3,
-      2 * least(wg1, wg2) AS bridge12,
-      2 * least(wg2, wg3) AS bridge23,
-      2 * least(wg1, wg3) AS bridge13,
-      3 * least(wg1, wg2, wg3) AS bridge123
+      WG1 / total AS wg1,
+      WG2 / total AS wg2,
+      WG3 / total AS wg3,
+      2 * least(WG1, WG2) / total AS bridge12,
+      2 * least(WG2, WG3) / total AS bridge23,
+      2 * least(WG1, WG3) / total AS bridge13,
+      3 * least(WG1, WG2, WG3) / total AS bridge123
     FROM
       (
         SELECT
           total_participations.author_id,
-          IFNULL(WG1,0) / total AS wg1,
-          IFNULL(WG2,0) / total AS wg2,
-          IFNULL(WG3,0) / total AS wg3,
+          IFNULL(WG1,0) AS WG1,
+          IFNULL(WG2,0) AS WG2,
+          IFNULL(WG3,0) AS WG3,
           total
         FROM
           (
