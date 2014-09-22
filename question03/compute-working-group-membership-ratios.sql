@@ -17,16 +17,16 @@ USE giec
 -- wg3 = WG3 / (WG1 + WG2 + WG3)
 --
 -- * Bridge of Working Groups I+II
--- min(wg1, wg2)
+-- 2 x min(wg1, wg2)
 --
 -- * Bridge of Working Groups II+III
--- min(wg2, wg3)
+-- 2 x min(wg2, wg3)
 --
 -- * Bridge of Working Groups I+III
--- min(wg1, wg3)
+-- 2 x min(wg1, wg3)
 --
 -- * Bridge of Working Groups I+II+III
--- min(wg1, wg2, wg3)
+-- 3 x min(wg1, wg2, wg3)
 --
 -- ordered by the latter ratio (descending),
 -- then by total participations (descending),
@@ -52,10 +52,10 @@ FROM
       wg1,
       wg2,
       wg3,
-      least(wg1, wg2) AS bridge12,
-      least(wg2, wg3) AS bridge23,
-      least(wg1, wg3) AS bridge13,
-      least(wg1, wg2, wg3) AS bridge123
+      2 * least(wg1, wg2) AS bridge12,
+      2 * least(wg2, wg3) AS bridge23,
+      2 * least(wg1, wg3) AS bridge13,
+      3 * least(wg1, wg2, wg3) AS bridge123
     FROM
       (
         SELECT
