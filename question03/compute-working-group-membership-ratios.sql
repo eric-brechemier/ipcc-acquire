@@ -7,29 +7,26 @@ USE giec
 -- For each author, compute working group membership ratios,
 -- a value that indicates the relative belonging to:
 --
--- * Bridge of Working Groups II+III vs Working Group I
--- (wg2 + wg3) - wg1
+-- * Working Group I
+-- wg1 = WG1 / (WG1 + WG2 + WG3)
 --
--- * Bridge of Working Groups I+III vs Working Group II
--- (wg1 + wg3) - wg2
+-- * Working Group II
+-- wg2 = WG2 / (WG1 + WG2+ WG3)
 --
--- * Bridge of Working Groups I+II vs Working Group III
--- (wg1 + wg2) - wg3
+-- * Working Group III
+-- wg3 = WG3 / (WG1 + WG2 + WG3)
 --
--- * Bridge of Working Groups I+II+III vs Individual Working Groups
--- 1 -
--- (
---    abs( 2 * wg1 - (wg2 + wg3) )
---  + abs( 2 * wg2 - (wg1 + wg3) )
---  + abs( 2 * wg3 - (wg1 + wg2) )
--- ) / 2
+-- * Bridge of Working Groups I+II
+-- min(wg1, wg2)
 --
--- with:
---  * wg1, the proportion of participations in Working Group 1,
---  * wg2, the proportion of participations in Working Group 2,
---  * wg3, the proportion of participations in Working Group 3,
+-- * Bridge of Working Groups II+III
+-- min(wg2, wg3)
 --
--- having (proportion = count / total),
+-- * Bridge of Working Groups I+III
+-- min(wg1, wg3)
+--
+-- * Bridge of Working Groups I+II+III
+-- min(wg1, wg2, wg3)
 --
 -- ordered by the latter ratio (descending),
 -- then by total participations (descending),
@@ -38,10 +35,10 @@ USE giec
 SELECT
   first_name AS 'First Name',
   last_name AS 'Last Name',
-  center AS 'WG I+II+III',
-  (+wg1 +wg2 -wg3) AS 'WG I+II',
-  (-wg1 +wg2 +wg3) AS 'WG II+III',
-  (+wg1 -wg2 +wg3) AS 'WG I+III',
+  bridge123 AS 'WG I+II+III',
+  bridge12 AS 'WG I+II',
+  bridge23 AS 'WG II+III',
+  bridge13 AS 'WG I+III',
   wg1 AS 'WG I',
   wg2 AS 'WG II',
   wg3 AS 'WG III',
@@ -55,14 +52,10 @@ FROM
       wg1,
       wg2,
       wg3,
-      (
-        1 -
-        (
-            ABS( 2 * wg1 - (wg2 + wg3) )
-          + ABS( 2 * wg2 - (wg1 + wg3) )
-          + ABS( 2 * wg3 - (wg1 + wg2) )
-        ) / 2
-      ) AS center
+      least(wg1, wg2) AS bridge12,
+      least(wg2, wg3) AS bridge23,
+      least(wg1, wg3) AS bridge13,
+      least(wg1, wg2, wg3) AS bridge123
     FROM
       (
         SELECT
@@ -105,11 +98,11 @@ FROM
           ) AS wg3_participations
           ON total_participations.author_id = wg3_participations.author_id
       ) AS wg_participations
-  ) AS normal_participations
+  ) AS bridge_participations
 WHERE
-  authors.id = normal_participations.author_id
+  authors.id = bridge_participations.author_id
 ORDER BY
-  center DESC,
+  bridge123 DESC,
   total DESC,
   last_name,
   first_name
