@@ -122,6 +122,7 @@ echo 'What kind of roles do the authors who participate'
 echo 'in more than one working group occupy?'
 echo '*******************************************************'
 echo 'Answers:'
+answer 05 compute-role-ratios
 answer 05 count-bridge-authors-by-cumulated-wg-and-role
 answer 05 count-bridge-authors-by-wg-and-role
 ls -l -h -o answer05
