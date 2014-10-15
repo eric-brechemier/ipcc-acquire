@@ -17,23 +17,24 @@ USE giec
 -- * the total number of participations
 --
 -- ordered by, using decreasing order of magnitude:
--- * distinct working groups, distinct assessment reports, distinct roles
+-- * distinct working groups
 -- * ratio of roles of responsibility
 -- * ratio of CLA, LA, RE, CA
 -- * total participations
+-- * distinct roles, distinct assessment reports
 -- * (in alphabetical order) last name, first name
 
 SELECT
   authors.first_name AS 'First Name',
   authors.last_name AS 'Last Name',
   distinct_working_groups.total AS 'Distinct WG',
-  distinct_assessment_reports.total AS 'Distinct AR',
-  distinct_roles.total AS 'Distinct Roles',
   ratios.responsibility AS 'Responsibility Roles',
   ratios.cla AS 'CLA',
   ratios.la AS 'LA',
   ratios.re AS 'RE',
   ratios.ca AS 'CA',
+  distinct_roles.total AS 'Distinct Roles',
+  distinct_assessment_reports.total AS 'Distinct AR',
   ratios.total_participations AS 'Total Participations'
 FROM
   authors
@@ -133,14 +134,14 @@ FROM
   ON authors.id = distinct_assessment_reports.author_id
 ORDER BY
   distinct_working_groups.total DESC,
-  distinct_assessment_reports.total DESC,
-  distinct_roles.total DESC,
   ratios.responsibility DESC,
   ratios.cla DESC,
   ratios.la DESC,
   ratios.re DESC,
   ratios.ca DESC,
   ratios.total_participations DESC,
+  distinct_roles.total DESC,
+  distinct_assessment_reports.total DESC,
   authors.last_name,
   authors.first_name
 ;
