@@ -19,6 +19,7 @@ else
   passwordParam="--password $password"
 fi
 
+database=giec
 query="mysql --host $host --user $user $passwordParam"
 
 # change to the script's directory
@@ -27,7 +28,7 @@ cd $(dirname $0)
 answer()
 {
   mkdir -p "answer$1"
-  $query \
+  $query $database \
     < "question$1/$2.sql" \
     > "answer$1/$2.tsv"
 }

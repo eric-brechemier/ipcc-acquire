@@ -1,7 +1,5 @@
 -- export the list of assessment reports
 
-USE 'giec';
-
 (
   SELECT
     'Any AR' AS 'name',

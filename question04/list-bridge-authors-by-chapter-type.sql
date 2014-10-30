@@ -3,8 +3,6 @@
 -- where these bridge authors tend to aggregate
 -- (i.e. around particular themes)?
 
-USE giec
-
 -- LIST BRIDGE AUTHORS IN EACH TYPE OF CHAPTER
 
 SELECT

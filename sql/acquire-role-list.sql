@@ -1,7 +1,5 @@
 -- export the list of distinct roles
 
-USE 'giec';
-
 (
   SELECT
     'Any Role' AS 'name',

@@ -2,8 +2,6 @@
 -- Q1. Who are the authors that have participated
 --     in more than 1, 2, 3, or 4 assessment reports?
 
-USE giec
-
 -- Count the authors who contributed to:
 -- * 2+ assessment reports
 -- * 3+ assessment reports

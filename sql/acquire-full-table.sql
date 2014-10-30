@@ -24,8 +24,6 @@
 --   groupings - list of codes of country groups for the country,
 --               separated with ', ', in no particular order
 
-USE giec;
-
 SELECT
   authors.id AS 'id',
   authors.first_name AS 'first_name',

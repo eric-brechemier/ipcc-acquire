@@ -3,8 +3,6 @@
 -- where these bridge authors tend to aggregate
 -- (i.e. around particular themes)?
 
-USE giec
-
 -- FOR EACH BRIDGE AUTHOR,
 -- list the name,
 -- countries, institution types, total AR participations, chapters

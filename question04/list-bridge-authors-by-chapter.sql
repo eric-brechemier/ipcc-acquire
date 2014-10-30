@@ -3,8 +3,6 @@
 -- where these bridge authors tend to aggregate
 -- (i.e. around particular themes)?
 
-USE giec
-
 -- FOR EACH BRIDGE AUTHOR,
 -- list the distinct pairs of chapters in distinct working groups
 -- (data to be imported in Table 2 Net as CSV,

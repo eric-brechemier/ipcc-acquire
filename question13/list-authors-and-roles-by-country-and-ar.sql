@@ -2,8 +2,6 @@
 -- Q.13. Which countries have increased their participation in the IPCC
 --       and which have decreased their participation over time?
 
-USE giec
-
 -- FOR EACH COUNTRY, in each Assessment Report,
 -- list authors and their roles
 

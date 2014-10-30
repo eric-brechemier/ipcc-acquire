@@ -2,8 +2,6 @@
 -- Q3. Who are the authors that have participated in
 -- more than one working group (what we call bridge authors)?
 
-USE giec
-
 -- LIST BRIDGE AUTHORS IN EACH COUNTRY
 
 SELECT

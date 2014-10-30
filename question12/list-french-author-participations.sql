@@ -2,8 +2,6 @@
 -- Q12. Where are French authors on the IPCC?
 -- To which chapters do they contribute the most?
 
-USE giec
-
 SELECT
   authors.first_name AS 'First Name',
   authors.last_name AS 'Last Name',

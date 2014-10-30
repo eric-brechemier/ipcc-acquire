@@ -2,8 +2,6 @@
 -- Q3. Who are the authors that have participated in
 -- more than one working group (what we call bridge authors)?
 
-USE giec
-
 -- For each author, compute working group membership ratios,
 -- a value that indicates the relative belonging to:
 --

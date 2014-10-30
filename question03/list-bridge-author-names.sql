@@ -2,8 +2,6 @@
 -- Q3. Who are the authors that have participated in
 -- more than one working group (what we call bridge authors)?
 
-USE giec
-
 SELECT
   total_wg AS 'Total WG',
   CONCAT( 'WG', cumulated_wg ) AS 'Cumulated WG',

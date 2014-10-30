@@ -2,8 +2,6 @@
 -- Q5. What kind of roles do the authors who participate
 -- in more than one working group occupy?
 
-USE giec
-
 -- For each author, compute:
 -- * for roles of responsibility (CLA+LA+RE),
 --   the ratio of participations with these roles on total participations

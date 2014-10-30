@@ -2,8 +2,6 @@
 -- (in current version of the database, there are different records
 -- for different countries where a single international institution is based)
 
-USE 'giec';
-
 (
   SELECT
     'Any Institution' AS 'name',

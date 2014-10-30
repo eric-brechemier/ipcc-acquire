@@ -1,7 +1,5 @@
 -- export the list of distinct total number of contributions values
 
-USE 'giec';
-
 -- the default option is the first number of total contributions: '1'
 SELECT
   CONCAT(

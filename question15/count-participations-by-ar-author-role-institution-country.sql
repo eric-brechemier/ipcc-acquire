@@ -2,8 +2,6 @@
 -- Q.15. What are the differences in diversity (by country and by institution)
 --       between the working groups?
 
-USE giec
-
 -- FOR EACH WMO REGION
 -- FOR EACH COUNTRY
 -- FOR EACH TYPE OF INSTITUTION

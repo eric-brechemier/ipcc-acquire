@@ -5,8 +5,6 @@
 --     in each assessment report of participation
 --     (Coordinating Lead Author, Lead Author, Review Editor)?
 
-USE giec
-
 -- RESP = authors with a role of responsibility (LA, CLA or RE)
 --        in EVERY assessment report of participation
 

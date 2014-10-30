@@ -3,8 +3,6 @@
 -- where these bridge authors tend to aggregate
 -- (i.e. around particular themes)?
 
-USE giec
-
 -- FOR BRIDGE AUTHORS AS A WHOLE,
 -- list the distinct pairs of chapters in distinct working groups
 -- with the number of occurrences,

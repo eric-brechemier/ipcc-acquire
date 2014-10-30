@@ -2,8 +2,6 @@
 -- Q1. Who are the authors that have participated
 --     in more than 1, 2, 3, or 4 assessment reports?
 
-USE giec
-
 -- FOR EACH COUNTRY,
 -- count the percentage of authors who contributed to:
 -- * 1+ assessment reports

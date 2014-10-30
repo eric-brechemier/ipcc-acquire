@@ -1,7 +1,5 @@
 -- export the list of distinct working group numbers
 
-USE 'giec';
-
 (
   SELECT
     'Any WG' AS 'name',

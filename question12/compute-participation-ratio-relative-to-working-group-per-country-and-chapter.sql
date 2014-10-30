@@ -2,8 +2,6 @@
 -- Q12. Where are French authors on the IPCC?
 -- To which chapters do they contribute the most?
 
-USE giec
-
 -- FOR EACH country,
 -- FOR EACH chapter of each working group's assessment report,
 -- compute the ratio of

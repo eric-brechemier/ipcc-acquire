@@ -2,8 +2,6 @@
 -- Q1. Who are the authors that have participated
 --     in more than 1, 2, 3, or 4 assessment reports?
 
-USE giec
-
 -- IN EACH CLI (Climate) COUNTRY GROUP,
 -- count the authors who contributed to:
 -- * 1+ assessment reports

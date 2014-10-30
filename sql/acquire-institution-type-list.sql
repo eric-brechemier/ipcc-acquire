@@ -1,7 +1,5 @@
 -- export the sets of authors for each type of institution
 
-USE 'giec';
-
 (
   SELECT
     'Any Institution Type' AS 'name',

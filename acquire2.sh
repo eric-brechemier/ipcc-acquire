@@ -21,6 +21,7 @@ else
   passwordParam="--password $password"
 fi
 
+database=giec
 query="mysql --host $host --user $user $passwordParam"
 
 # change to the script's directory
@@ -31,7 +32,7 @@ mkdir -p output
 
 acquire()
 {
-  $query \
+  $query $database \
     < "sql/acquire-$1.sql" \
     > "output/$1.tsv"
 }

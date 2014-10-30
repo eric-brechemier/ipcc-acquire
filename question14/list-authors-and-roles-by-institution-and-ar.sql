@@ -2,8 +2,6 @@
 -- Q.14. Which institutions have increased or decreased
 --       the most in participation over time?
 
-USE giec
-
 -- FOR EACH INSTITUTION, in each Assessment Report,
 -- list authors and their roles
 

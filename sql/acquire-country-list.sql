@@ -1,7 +1,5 @@
 -- export the list of countries
 
-USE 'giec';
-
 (
   SELECT
     'Any Country' AS 'name',

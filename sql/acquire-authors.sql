@@ -1,6 +1,4 @@
 -- export the list of authors, ordered by author id
-USE 'giec';
-
 SELECT
   authors.id 'id',
   authors.first_name 'first_name',
