@@ -20,7 +20,7 @@ else
   passwordParam="--password $password"
 fi
 
-database=giec
+database=ipcc
 query="mysql --host $host --user $user $passwordParam"
 
 # change to the script's directory
