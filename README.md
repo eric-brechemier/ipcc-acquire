@@ -1,5 +1,5 @@
 # IPCC Acquire
-Query 'giec' database from MySQL server and return data in TSV format
+Query `ipcc` database from MySQL server and return data in TSV format
 (Tab-Separated Values).
 
 ## Languages
@@ -9,9 +9,9 @@ Query 'giec' database from MySQL server and return data in TSV format
 
 ## Prerequisites
 
-You can request a copy of the 'giec' database from Sciences Po
-by sending an email with a description of your intended use case
-to <medialab@sciencespo.fr>.
+The `ipcc` database can be imported from CSV files to MySQL server
+with scripts and data included in the ipcc-database repository:  
+https://github.com/medea-project/ipcc-database
 
 ## Run
 
