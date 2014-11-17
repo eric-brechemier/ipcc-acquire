@@ -30,5 +30,6 @@ ORDER BY
   authors.first_name,
   participations.ar,
   participations.wg,
+  participations.chapter,
   participations.role
 ;
