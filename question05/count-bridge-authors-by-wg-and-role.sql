@@ -2,7 +2,7 @@
 -- Q5. What kind of roles do the authors who participate
 -- in more than one working group occupy?
 
--- In each cumulated working group,
+-- In each working group,
 -- count the total number of bridge authors
 -- IN EACH ROLE
 
