@@ -12,11 +12,11 @@
 -- count the total number of participations
 
 SELECT
-  country_groups.symbol AS 'WMO Region Symbol',
+  country_groups.name AS 'WMO Region',
   countries.name AS 'Country Name',
-  institution_types.symbol AS 'Institution Type Symbol',
+  institution_types.name AS 'Institution Type',
   institutions.name AS 'Institution Name',
-  roles.symbol AS 'Role Symbol',
+  roles.name AS 'Role',
   CONCAT( authors.first_name, ' ', authors.last_name ) AS 'Author Name',
   CONCAT( 'AR', participations.ar ) AS 'AR',
   COUNT( participations.id ) AS 'Total'
